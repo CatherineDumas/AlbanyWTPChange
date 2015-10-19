@@ -1,7 +1,7 @@
 module.exports = {
 
 	'Statuses': function(req,res){
-
+		console.log(req.param('params'));
 		var finalQuery = 'Select * from statuses LIMIT 10';
 
 		console.log("In the controller twitter_data_statuses");
