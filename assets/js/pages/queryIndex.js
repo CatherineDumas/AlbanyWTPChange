@@ -49,20 +49,27 @@ $("#table_list").on('change',function(){
 
 $("#executeQuery").on('click', function(){
 
-	var url  = "/twitter_data_urls_query";
+
+
+
 	curAttr = $('.attribute:checkbox:checked').map(function() {
 	    return this.value;
 	}).get();
 
-	console.log($('#attribute_list checkbox:checked'))
+
 	console.log(curAttr);
-
-	//console.log(dbs);
-
-	console.log("URL in queryPage", url);
 
 	var params = {db:curDB,table:curTable,attr:curAttr};
 
+	//execQuery(params);
+
+
+})
+
+function execQuery(params){
+
+	var url  = "/twitter_data_urls_query";
+	console.log("URL in execQuery", url);
 
 
 	d3.json(url)
@@ -71,4 +78,5 @@ $("#executeQuery").on('click', function(){
 		console.log("data",dataFromServer);
 
 	})
-})
+
+}
