@@ -1,0 +1,43 @@
+<html>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="code.js"></script>
+</body>
+ Table choice:
+<form id = "form_db">
+  <select id = "db_select"> 
+    <option value="" selected="selected"></option>
+    <option value="signature">Signature Table</option>
+    <option value="petition">Petition Table</option>
+  </select>
+</form>
+
+<form name = "signature" id = "signature" style="display:none">
+  	Begin Date:<br>
+  	<input type="text" name="firstname" value="mm/dd/yyyy">
+  	<br>
+  	End Date:<br>
+  	<input type="text" name="lastname" value="mm/dd/yyyy">
+  	<br><br>
+  	<input type="submit" value="Submit">
+
+	<input type="checkbox" name="query" value="body">body<br>
+	<input type="checkbox" name="query" value="start date">begin date<br>
+</form>
+
+<form name = "petition" id = "petition" style="display:none">
+    Begin Date:<br>
+    <input type="text" name="firstname" value="mm/dd/yyyy">
+    <br>
+    End Date:<br>
+    <input type="text" name="lastname" value="mm/dd/yyyy">
+    <br><br>
+    <input type="submit" value="Submit">
+
+  <input type="checkbox" name="query" value="body">body<br>
+  <input type="checkbox" name="query" value="start date">begin date<br>
+</form>
+
+<button type="button">Query Data!</button>
+
+</body>
+</html>
