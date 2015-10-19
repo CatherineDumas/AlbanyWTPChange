@@ -1,6 +1,6 @@
 module.exports = {
-
-  attributes: {
+	connection:"Geo_wtp",
+	attributes: {
 		"petition_id": "string",
 		"response_id": "string",
 		"association_time": "int", 

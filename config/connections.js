@@ -41,7 +41,7 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
-  Wtp_geo: {
+  Geo_wtp: {
     module    : 'sails-mysql',
     host      : 'localhost',
     port      : 9999,
@@ -50,6 +50,14 @@ module.exports.connections = {
     database  : 'geo_wtp'
   },
 
+  Twitter_data: {
+    module    : 'sails-mysql',
+    host      : 'localhost',
+    port      : 9999,
+    user      : 'wtp_ro',
+    password  : '9Anc0uf54l0HLsBKossQ',
+    database  : 'twitter_data'
+  },
 
   /***************************************************************************
   *                                                                          *

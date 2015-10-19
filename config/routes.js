@@ -33,11 +33,37 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: 'index'
   },
 
-  '/wtp_geo_data_petitions_query' : 'Wtp_Geo_Controller.Wtp_data_petitions'
+  /***************************************************************************
+  *
+  * geo_wtp routes
+  *
+  ***************************************************************************/
+
+  '/geo_wtp_data_issues_query' : 'Geo_Wtp_Controller.Wtp_data_issues',
+
+  '/geo_wtp_data_petition_issues_query' : 'Geo_Wtp_Controller.Wtp_data_petition_issues',
+
+  '/geo_wtp_data_petition_responses_query' : 'Geo_Wtp_Controller.Wtp_data_petition_responses',
+
+  '/geo_wtp_data_petitions_query' : 'Geo_Wtp_Controller.Wtp_data_petitions',
+
+  '/geo_wtp_data_responses_query' : 'Geo_Wtp_Controller.Wtp_data_responses',
+
+  '/geo_wtp_data_signatures_query' : 'Geo_Wtp_Controller.Wtp_data_signatures',
+
+
+  /***************************************************************************
+  *
+  * twitter_data routes
+  *
+  ***************************************************************************/ 
   
+  '/twitter_data_statuses_query' : 'Twitter_Data_Controller.Statuses',
+
+  '/twitter_data_urls_query' : 'Twitter_Data_Controller.Urls'
 
 
   /***************************************************************************
