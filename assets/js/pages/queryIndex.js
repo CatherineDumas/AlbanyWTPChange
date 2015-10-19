@@ -61,15 +61,24 @@ $("#executeQuery").on('click', function(){
 
 	var params = {db:curDB,table:curTable,attr:curAttr};
 
-	//execQuery(params);
+	execQuery(params);
 
 
 })
 
 function execQuery(params){
+	console.log(params)
+	// params.db = params.db.split(' ').join('_');
+	// params.table = params.table.split(' ').join('_');
 
-	var url  = "/twitter_data_urls_query";
+	// console.log(params)
+
+	var url  = dbs[params.db]['tables'][params.table].route
 	console.log("URL in execQuery", url);
+
+
+
+
 
 
 	d3.json(url)
