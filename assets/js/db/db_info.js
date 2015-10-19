@@ -3,12 +3,14 @@ var dbs = {
 	geo_wtp:{
 		tables:{
 			wtp_data_issues:{
+				route:"/geo_wtp_data_issues_query",
 				fields:[
 					'id',
 					'name'
 				]
 			},
 			wtp_data_petition_issues:{
+				route:"/geo_wtp_data_petition_issues_query",
 				fields:[
 					'petition_id',
 					'issue_id'
@@ -16,6 +18,7 @@ var dbs = {
 				]
 			},
 			wtp_data_petition_responses:{
+				route:"/geo_wtp_data_petition_responses_query",
 				fields:[
 					'petition_id',
 					'response_id',
@@ -23,6 +26,7 @@ var dbs = {
 				]
 			},
 			wtp_data_petitions:{
+				route:"/geo_wtp_data_petitions_query",
 				fields:[
 					'petition_id',
 					'response_id',
@@ -40,12 +44,14 @@ var dbs = {
 				]
 			},
 			wtp_data_responses:{
+				route:"/geo_wtp_data_responses_query",
 				fields:[
 					'id',
 					'url'
 				]
 			},
 			wtp_data_signatures:{
+				route:"/geo_wtp_data_signatures_query",
 				fields:[
 					'id',
 					'petition_id',
@@ -61,6 +67,7 @@ var dbs = {
 	twitter_data:{
 		tables:{
 			statuses:{
+				route:"/twitter_data_statuses_query",
 				fields:[
 					'id',
 					'original_status_id',
@@ -77,6 +84,7 @@ var dbs = {
 				]
 			},
 			url:{
+				route:"/twitter_data_urls_query",
 				fields:[
 					'id',
 					'status_id',
