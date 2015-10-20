@@ -36,7 +36,7 @@ $("#table_list").on('change',function(){
 	console.log(curTable);
 	$("#attribute_list").empty();
 
-	dbs[curDB]['tables'][curTable]['fields'].forEach(function(attribute){
+	Object.keys(dbs[curDB]['tables'][curTable]['fields']).forEach(function(attribute){
 		var checkboxBtn = $('<input class="attribute" type="checkbox" name="attribute" id="attribute" value='+attribute+' >'+attribute+'</input>');
 		    checkboxBtn.appendTo('#attribute_list');
 	})
