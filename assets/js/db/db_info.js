@@ -4,62 +4,62 @@ var dbs = {
 		tables:{
 			wtp_data_issues:{
 				route:"/geo_wtp_data_issues_query",
-				fields:[
-					'id',
-					'name'
-				]
+				fields:{
+					'id':{},
+					'name':{}
+				}
 			},
 			wtp_data_petition_issues:{
 				route:"/geo_wtp_data_petition_issues_query",
-				fields:[
-					'petition_id',
-					'issue_id'
+				fields:{
+					'petition_id':{},
+					'issue_id':{}
 
-				]
+				}
 			},
 			wtp_data_petition_responses:{
 				route:"/geo_wtp_data_petition_responses_query",
-				fields:[
-					'petition_id',
-					'response_id',
-					'association_time'
-				]
+				fields:{
+					'petition_id':{},
+					'response_id':{},
+					'association_time':{}
+				}
 			},
 			wtp_data_petitions:{
 				route:"/geo_wtp_data_petitions_query",
-				fields:[
-					'petition_id',
-					'response_id',
-					'association_time',
-					'serial',
-					'id',
-					'type',
-					'title',
-					'body',
-					'signature_threshold',
-					'signature_count',
-					'url',
-					'deadline',
-					'created'
-				]
+				fields:{
+					'petition_id':{},
+					'response_id':{},
+					'association_time':{},
+					'serial':{},
+					'id':{},
+					'type':{},
+					'title':{},
+					'body':{},
+					'signature_threshold':{},
+					'signature_count':{},
+					'url':{},
+					'deadline':{},
+					'created':{}
+				}
 			},
 			wtp_data_responses:{
 				route:"/geo_wtp_data_responses_query",
-				fields:[
-					'id',
-					'url'
-				]
+				fields:{
+					'id':{},
+					'url':{}
+				}
 			},
 			wtp_data_signatures:{
 				route:"/geo_wtp_data_signatures_query",
-				fields:[
-					'id',
-					'petition_id',
-					'type',
-					'name',
-					'zip',
-					'created'
-				]
+				fields:{
+					'id':{},
+					'petition_id':{},
+					'type':{},
+					'name':{},
+					'zip':{},
+					'created':{}
+				}
 			}
 		}
 	},
@@ -68,28 +68,28 @@ var dbs = {
 		tables:{
 			statuses:{
 				route:"/twitter_data_statuses_query",
-				fields:[
-					'id',
-					'original_status_id',
-					'created_at',
-					'text',
-					'longitude',
-					'favorite_count',
-					'retweet_count',
-					'user_id',
-					'user_followers_count',
-					'user_friends_count',
-					'user_location',
-					'user_screen_name'
-				]
+				fields:{
+					'id':{},
+					'original_status_id':{},
+					'created_at':{},
+					'text':{},
+					'longitude':{},
+					'favorite_count':{},
+					'retweet_count':{},
+					'user_id':{},
+					'user_followers_count':{},
+					'user_friends_count':{},
+					'user_location':{},
+					'user_screen_name':{}
+				}
 			},
 			url:{
 				route:"/twitter_data_urls_query",
-				fields:[
-					'id',
-					'status_id',
-					'url'
-				]
+				fields:{
+					'id':{},
+					'status_id':{},
+					'url':{}
+				}
 			}
 		}
 	}
