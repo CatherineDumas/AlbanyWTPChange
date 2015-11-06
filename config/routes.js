@@ -63,8 +63,36 @@ module.exports.routes = {
   
   '/twitter_data_statuses_query' : 'Twitter_Data_Controller.Statuses',
 
-  '/twitter_data_urls_query' : 'Twitter_Data_Controller.Urls'
+  '/twitter_data_urls_query' : 'Twitter_Data_Controller.Urls',
 
+
+  /***************************************************************************
+  *
+  * geo_wtp routes
+  *
+  ***************************************************************************/
+
+
+
+
+  '/wtp_issues_query' : 'Wtp_Controller.Wtp_issues',
+
+
+  '/wtp_petition_issues_query' : 'Wtp_Controller.Wtp_petition_issues',
+
+  '/wtp_petition_responses_query' : 'Wtp_Controller.Wtp_petition_responses',
+
+  '/wtp_petitions_query' : 'Wtp_Controller.Wtp_petitions',
+
+  '/wtp_responses_query' : 'Wtp_Controller.Wtp_responses',
+
+  '/wtp_signatures_query' : 'Wtp_Controller.Wtp_signatures',
+
+  '/wtp_signature_counts_query' : 'Wtp_Controller.Wtp_signature_counts',
+
+  '/wtp_signature_tmp_query' : 'Wtp_Controller.Wtp_signature_tmp',
+  
+  '/wtp_temp_query' : 'Wtp_Controller.Wtp_temp'
 
   /***************************************************************************
   *                                                                          *
