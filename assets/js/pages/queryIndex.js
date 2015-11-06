@@ -44,10 +44,10 @@ $("#table_list").on('change',function(){
 })
 
 //Jquery to execute query. Gets all selected attributes
-$("csv").on('click', function(){
+$("#csv").on('click', function(){
 
 
-
+	console.log("annyong");
 
 	curAttr = $('.attribute:checkbox:checked').map(function() {
 	    return this.value;
@@ -90,7 +90,6 @@ function csvQuery(params){
 	.post(JSON.stringify({params:params}),function(err,dataFromServer){
 
 
-
 		console.log("data",dataFromServer);
 		JSONToCSVConvertor(dataFromServer, fileName, true);
 	})
@@ -98,7 +97,7 @@ function csvQuery(params){
 }
 
 //Jquery to execute query. Gets all selected attributes
-$("tsv").on('click', function(){
+$("#tsv").on('click', function(){
 
 
 
@@ -303,7 +302,7 @@ function JSONToTSVConvertor(JSONData, ReportTitle, ShowLabel) {
         for (var index in arrData[0]) {
             
             //Now convert each value to string and comma-seprated
-            row += index + ',';
+            row += index + '\t';
         }
 
         row = row.slice(0, -1);
@@ -318,7 +317,7 @@ function JSONToTSVConvertor(JSONData, ReportTitle, ShowLabel) {
         
         //2nd loop will extract each column and convert it in string comma-seprated
         for (var index in arrData[i]) {
-            row += '"' + arrData[i][index] + '",';
+            row += '"' + arrData[i][index] + '"\t';
         }
 
         row.slice(0, row.length - 1);
