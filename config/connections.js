@@ -59,6 +59,15 @@ module.exports.connections = {
     database  : 'twitter_data'
   },
 
+  Wtp: {
+    module    : 'sails-mysql',
+    host      : 'localhost',
+    port      : 9999,
+    user      : 'wtp_ro',
+    password  : '9Anc0uf54l0HLsBKossQ',
+    database  : 'wtp'
+  },
+
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *
