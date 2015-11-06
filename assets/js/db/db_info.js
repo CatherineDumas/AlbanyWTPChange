@@ -28,9 +28,6 @@ var dbs = {
 			wtp_data_petitions:{
 				route:"/geo_wtp_data_petitions_query",
 				fields:{
-					'petition_id':{},
-					'response_id':{},
-					'association_time':{},
 					'serial':{},
 					'id':{},
 					'type':{},
