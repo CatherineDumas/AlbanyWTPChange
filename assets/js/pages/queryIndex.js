@@ -7,8 +7,9 @@ var curAttr = [];
 Object.keys(dbs).forEach(function(db){
 
 	var curId = db;
+	console.log(dbs[db]);
 
-	var radioBtn = $('<button onClick="db_function(this.id)" class = "btn btn-primary:active" name="db" id='+curId+' value='+db+' >'+db+'</button>');
+	var radioBtn = $('<button onClick="db_function(this.id)" class = "btn btn-primary:active" name="db" id='+curId+' value='+db+' ><b>'+dbs[db].name+"</b><br>"+db+'</button>');
 	    radioBtn.appendTo('#db_list');
 
 
@@ -35,7 +36,7 @@ function db_function(db){
 
 
 	Object.keys(dbs[curDB].tables).forEach(function(table){
-		var radioBtn = $('<button  class = "btn btn-primary:active" onClick="table_function(this.id)" name="table" id='+table+' value='+table+' >'+table+'</button>');
+		var radioBtn = $('<button  class = "btn btn-primary:active" onClick="table_function(this.id)" name="table" id='+table+' value='+table+' ><b>'+dbs[curDB].tables[table].name+"</b><br>"+table+'</button>');
 		    radioBtn.appendTo('#table_list');
 	})
 }

@@ -1,8 +1,10 @@
 var dbs = {
 
 	geo_wtp:{
+		name:"Full We The People Data",
 		tables:{
 			wtp_data_issues:{
+				name:"Incomplete Issue Code Crosstable",
 				route:"/geo_wtp_data_issues_query",
 				fields:{
 					'id':{},
@@ -10,6 +12,7 @@ var dbs = {
 				}
 			},
 			wtp_data_petition_issues:{
+				name:"Petition ID and associated Issue ID",
 				route:"/geo_wtp_data_petition_issues_query",
 				fields:{
 					'petition_id':{},
@@ -18,6 +21,7 @@ var dbs = {
 				}
 			},
 			wtp_data_petition_responses:{
+				name:"Petition ID and associated Response ID",
 				route:"/geo_wtp_data_petition_responses_query",
 				fields:{
 					'petition_id':{},
@@ -26,6 +30,7 @@ var dbs = {
 				}
 			},
 			wtp_data_petitions:{
+				name:"Petitions",
 				route:"/geo_wtp_data_petitions_query",
 				fields:{
 					'serial':{},
@@ -41,6 +46,7 @@ var dbs = {
 				}
 			},
 			wtp_data_responses:{
+				name:"Response ID and URL",
 				route:"/geo_wtp_data_responses_query",
 				fields:{
 					'id':{},
@@ -48,6 +54,7 @@ var dbs = {
 				}
 			},
 			wtp_data_signatures:{
+				name:"Signatures",
 				route:"/geo_wtp_data_signatures_query",
 				fields:{
 					'id':{},
@@ -62,8 +69,10 @@ var dbs = {
 	},
 
 	twitter_data:{
+		name:"Twitter Data",
 		tables:{
 			statuses:{
+				name:"Statuses",
 				route:"/twitter_data_statuses_query",
 				fields:{
 					'id':{},
@@ -81,6 +90,7 @@ var dbs = {
 				}
 			},
 			url:{
+				name:"URL and Status Crosstable",
 				route:"/twitter_data_urls_query",
 				fields:{
 					'id':{},
@@ -92,6 +102,7 @@ var dbs = {
 	},
 
 	wtp:{
+		name:"Public We The People Data",
 		tables:{
 			issue:{
 				route:"/wtp_issue_query",
