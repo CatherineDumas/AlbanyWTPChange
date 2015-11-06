@@ -22,7 +22,7 @@ module.exports = {
 
 		console.log("Query Params",queryAttr);
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_issues LIMIT 10";
+		var newQuery = "Select " + queryAttr + " from wtp_data_issues LIMIT 100";
 
 
 
@@ -30,7 +30,7 @@ module.exports = {
 
 		console.log("In the controller wtp_data_issues");
 
-		//finalQuery = "Select * from wtp_data_issues LIMIT 10";
+		//finalQuery = "Select * from wtp_data_issues LIMIT 100";
 
 		//res.json({data:"NOTHING"});
 		//console.log(finalQuery);
@@ -65,9 +65,9 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_petition_issues LIMIT 10";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petition_issues LIMIT 100";
 
-		//var finalQuery = 'Select * from wtp_data_petition_issues LIMIT 10';
+		//var finalQuery = 'Select * from wtp_data_petition_issues LIMIT 100';
 
 		console.log("In the controller data_petition_issues");
 
@@ -104,9 +104,9 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_petition_responses LIMIT 10";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petition_responses LIMIT 100";
 
-		//var finalQuery = 'Select * from wtp_data_petition_responses LIMIT 10';
+		//var finalQuery = 'Select * from wtp_data_petition_responses LIMIT 100';
 
 		console.log("In the controller wtp_data_petition_responses");
 
@@ -143,9 +143,9 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_petitions LIMIT 10";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petitions LIMIT 100";
 
-		//var finalQuery = 'Select * from wtp_data_petitions LIMIT 10';
+		//var finalQuery = 'Select * from wtp_data_petitions LIMIT 100';
 
 		console.log("In the controller  Wtp_data_petitions");
 		console.log(newQuery);
@@ -180,9 +180,9 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_responses LIMIT 10";
+		var newQuery = "Select " + queryAttr + " from wtp_data_responses LIMIT 100";
 
-		//var finalQuery = 'Select * from wtp_data_responses LIMIT 10';
+		//var finalQuery = 'Select * from wtp_data_responses LIMIT 100';
 
 		console.log("In the controller Wtp_data_responses");
 
@@ -219,9 +219,9 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_signatures LIMIT 10";
+		var newQuery = "Select " + queryAttr + " from wtp_data_signatures LIMIT 100";
 
-		//var finalQuery = 'Select * from wtp_data_signatures LIMIT 10';
+		//var finalQuery = 'Select * from wtp_data_signatures LIMIT 100';
 
 		console.log("In the controller wtp_data_signatures");
 
