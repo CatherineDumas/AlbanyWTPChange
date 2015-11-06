@@ -8,23 +8,34 @@ Object.keys(dbs).forEach(function(db){
 
 	var curId = db;
 
-	var radioBtn = $('<button onClick="db_function(this.id)" class = "btn" name="db" id='+curId+' value='+db+' >'+db+'</button>');
+	var radioBtn = $('<button onClick="db_function(this.id)" class = "btn btn-primary:active" name="db" id='+curId+' value='+db+' >'+db+'</button>');
 	    radioBtn.appendTo('#db_list');
 
 
 })
 
+
+
 function db_function(db){
 	curDB = db;
-
 	console.log(curDB);
+
+
+	var dbButtons = $("#db_list :button");
+
+	Object.keys(dbButtons).forEach(function(button){
+		//dbButtons[button].removeClass('btn-primary:active').addClass('btn-primary');
+		$("#"+dbButtons[button].id).removeClass('btn-primary').addClass('btn-primary:active');
+	})	
+
+	$("#"+curDB).removeClass('btn-primary:active').addClass('btn-primary');
 
 	$("#table_list").empty();
 	$("#attribute_list").empty();
 
 
 	Object.keys(dbs[curDB].tables).forEach(function(table){
-		var radioBtn = $('<button class="btn" onClick="table_function(this.id)" name="table" id='+table+' value='+table+' >'+table+'</button>');
+		var radioBtn = $('<button  class = "btn btn-primary:active" onClick="table_function(this.id)" name="table" id='+table+' value='+table+' >'+table+'</button>');
 		    radioBtn.appendTo('#table_list');
 	})
 }
@@ -35,19 +46,48 @@ function table_function(table){
 	$("#attribute_list").empty();
 	curAttr = [];
 
+	var tableButtons = $("#table_list :button");
+
+	Object.keys(tableButtons).forEach(function(button){
+		//dbButtons[button].removeClass('btn-primary:active').addClass('btn-primary');
+		$("#"+tableButtons[button].id).removeClass('btn-primary').addClass('btn-primary:active');
+	})	
+
+	$("#"+curTable).removeClass('btn-primary:active').addClass('btn-primary');
+
+
+
 	Object.keys(dbs[curDB]['tables'][curTable]['fields']).forEach(function(attribute){
-		var checkboxBtn = $('<button class="btn" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
+		var checkboxBtn = $('<button class = "btn btn-primary:active" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
 		    checkboxBtn.appendTo('#attribute_list');
 	})
 }
 
 function attr_function(attr){
-	curAttr.push(attr);
+
+	var attrIndex = curAttr.indexOf(attr);
+
+	if(attrIndex == -1){
+		curAttr.push(attr);		
+	}
+	else{
+		curAttr.splice(attrIndex,1);
+	}
+
+
+
+	if($("#"+attr).hasClass('btn-primary:active')){
+		$("#"+attr).removeClass('btn-primary:active').addClass('btn-primary');
+	}
+	else{
+		$("#"+attr).removeClass('btn-primary').addClass('btn-primary:active');
+	}
+
 
 	console.log(curAttr);
-
-
 }
+
+
 
 //Jquery to execute query. Gets all selected attributes
 $("#csv").on('click', function(){
