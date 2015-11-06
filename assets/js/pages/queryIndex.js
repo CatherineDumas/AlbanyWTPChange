@@ -6,15 +6,16 @@ var curAttr = [];
 //Prints all DBs from db_info.js
 Object.keys(dbs).forEach(function(db){
 
-	var radioBtn = $('<input type="radio" name="db" id="db" value='+db+' >'+db+'</input>');
+	var curId = db;
+
+	var radioBtn = $('<button onClick="db_function(this.id)" class = "btn" name="db" id='+curId+' value='+db+' >'+db+'</button>');
 	    radioBtn.appendTo('#db_list');
 
 
 })
 
-//When a DB is selected, prints all tables for that DB, from db_info.js
-$("input[name='db']:radio").on('change',function(){
-	curDB = $(this).val();
+function db_function(db){
+	curDB = db;
 
 	console.log(curDB);
 
@@ -23,25 +24,30 @@ $("input[name='db']:radio").on('change',function(){
 
 
 	Object.keys(dbs[curDB].tables).forEach(function(table){
-		var radioBtn = $('<input type="radio" name="table" id="table" value='+table+' >'+table+'</input>');
+		var radioBtn = $('<button class="btn" onClick="table_function(this.id)" name="table" id='+table+' value='+table+' >'+table+'</button>');
 		    radioBtn.appendTo('#table_list');
 	})
-})
+}
 
-//When a table is selected, prints all the fields for that table, from db_info.js
-$("#table_list").on('change',function(){
-
-	var chk = $('#table_list input:radio:checked');
- 	curTable = chk.attr('value');
+function table_function(table){
+ 	curTable = table;
 	console.log(curTable);
 	$("#attribute_list").empty();
+	curAttr = [];
 
 	Object.keys(dbs[curDB]['tables'][curTable]['fields']).forEach(function(attribute){
-		var checkboxBtn = $('<input class="attribute" type="checkbox" name="attribute" id="attribute" value='+attribute+' >'+attribute+'</input>');
+		var checkboxBtn = $('<button class="btn" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
 		    checkboxBtn.appendTo('#attribute_list');
 	})
+}
 
-})
+function attr_function(attr){
+	curAttr.push(attr);
+
+	console.log(curAttr);
+
+
+}
 
 //Jquery to execute query. Gets all selected attributes
 $("#csv").on('click', function(){

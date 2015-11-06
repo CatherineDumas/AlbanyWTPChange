@@ -9,7 +9,7 @@ sudo ssh -fN -L 9999:localhost:3306 yourNetId@projpet.rit.albany.edu
 
 9999 is a random port. 
 
-If successful, can connect through localhost:9999
+If successful, can connect through localhost:9998
 
 sudo lsof -i -n | egrep '\<ssh\>'
 Will show you open tunnels
