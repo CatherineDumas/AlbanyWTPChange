@@ -76,10 +76,7 @@ function attr_function(attr){
 
 	if(attrIndex == -1){
 		curAttr.push(attr);	
-		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
-			var keyBox = $('<input style="display:block;"type=text class="input" id='+attr+'_where placeholder="One (or more) id numbers"> </input>');
-			keyBox.appendTo('#'+attr+'_div');
-		} 
+		where_attr(attr);
 	}
 	else{
 		curAttr.splice(attrIndex,1);
@@ -99,6 +96,14 @@ function attr_function(attr){
 
 
 	console.log(curAttr);
+}
+
+//Creates the appropriate where_clause input box for the given (selected) attribute
+function where_attr(attr){
+		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
+			var keyBox = $('<input style="display:block;"type=text class="input" id='+attr+'_where placeholder="One (or more) id numbers"> </input>');
+			keyBox.appendTo('#'+attr+'_div');
+		} 
 }
 
 
