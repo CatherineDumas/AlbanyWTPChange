@@ -5,8 +5,12 @@ var dbs = {
 //Tables have 'name', same as above
 //Fields have type, which is what kind of field it is
 //key means it is a key/ID number, so the user only cares about being able to look up SPECIFIC ones
-//value means it is a value, user will want specific, ranges, etc.
-//Text means it is a text field. user will want boolean word search, and number of words
+//value means it is a value, user will want specific, ranges, greater/less etc.
+//url means it is a web url
+//time is a time value
+//term_text means it is a single (or few) word text field.
+//term_num means it is a number field but cannot apply greater than/less than, etc. 
+//text means it is a multiple-word text field. user will want boolean word search, and number of words
 	geo_wtp:{
 		name:"Full We The People Data",
 		tables:{
@@ -15,7 +19,7 @@ var dbs = {
 				route:"/geo_wtp_data_issues_query",
 				fields:{
 					'id':{type:"key"},
-					'name':{type:""}
+					'name':{type:"term_text"}
 				}
 			},
 			wtp_data_petition_issues:{
@@ -42,14 +46,14 @@ var dbs = {
 				fields:{
 					'serial':{type:"key"},
 					'id':{type:"key"},
-					'type':{type:""},
-					'title':{type:""},
-					'body':{type:""},
-					'signature_threshold':{type:""},
-					'signature_count':{type:""},
-					'url':{type:""},
-					'deadline':{type:""},
-					'created':{type:""}
+					'type':{type:"term_text"},
+					'title':{type:"text"},
+					'body':{type:"text"},
+					'signature_threshold':{type:"value"},
+					'signature_count':{type:"value"},
+					'url':{type:"url"},
+					'deadline':{type:"time"},
+					'created':{type:"time"}
 				}
 			},
 			wtp_data_responses:{
@@ -57,7 +61,7 @@ var dbs = {
 				route:"/geo_wtp_data_responses_query",
 				fields:{
 					'id':{type:"key"},
-					'url':{type:""}
+					'url':{type:"url"}
 				}
 			},
 			wtp_data_signatures:{
@@ -66,10 +70,10 @@ var dbs = {
 				fields:{
 					'id':{type:"key"},
 					'petition_id':{type:"key"},
-					'type':{type:""},
-					'name':{type:""},
-					'zip':{type:""},
-					'created':{type:""}
+					'type':{type:"term_text"},
+					'name':{type:"term_text"},
+					'zip':{type:"term_num"},
+					'created':{type:"time"}
 				}
 			}
 		}
@@ -84,16 +88,17 @@ var dbs = {
 				fields:{
 					'id':{type:"key"},
 					'original_status_id':{type:"key"},
-					'created_at':{type:""},
-					'text':{type:""},
-					'longitude':{type:""},
-					'favorite_count':{type:""},
-					'retweet_count':{type:""},
+					'created_at':{type:"time"},
+					'text':{type:"text"},
+					'longitude':{type:"value"},
+					'latitude':{type:"value"},
+					'favorite_count':{type:"value"},
+					'retweet_count':{type:"value"},
 					'user_id':{type:"key"},
-					'user_followers_count':{type:""},
-					'user_friends_count':{type:""},
-					'user_location':{type:""},
-					'user_screen_name':{type:""}
+					'user_followers_count':{type:"value"},
+					'user_friends_count':{type:"value"},
+					'user_location':{type:"term_text"},
+					'user_screen_name':{type:"term_text"}
 				}
 			},
 			url:{
@@ -102,7 +107,7 @@ var dbs = {
 				fields:{
 					'id':{type:"key"},
 					'status_id':{type:"key"},
-					'url':{type:""}
+					'url':{type:"url"}
 				}
 			}
 		}
@@ -116,7 +121,7 @@ var dbs = {
 				route:"/wtp_issues_query",
 				fields:{
 					'id':{type:"key"},
-					'name':{type:""}
+					'name':{type:"term"}
 				}
 			},
 			petition:{
@@ -124,15 +129,15 @@ var dbs = {
 				route:"/wtp_petitions_query",
 				fields:{
 					'id':{type:"key"},
-					'title':{type:""},
-					'status':{type:""},
-					'url':{type:""},
-					'body':{type:""},
-					'created':{type:""},
-					'deadline':{type:""},
-					'is_public':{type:""},
-					'is_signable':{type:""},
-					'signature_threshold':{type:""}
+					'title':{type:"text"},
+					'status':{type:"term_text"},
+					'url':{type:"url"},
+					'body':{type:"text"},
+					'created':{type:"time"},
+					'deadline':{type:"time"},
+					'is_public':{type:"boolean"},
+					'is_signable':{type:"boolean"},
+					'signature_threshold':{type:"value"}
 				}
 			},
 			petition_issue:{
@@ -158,8 +163,8 @@ var dbs = {
 				route:"/wtp_responses_query",
 				fields:{
 					'id':{type:"key"},
-					'responded':{type:""},
-					'url':{type:""}
+					'responded':{type:"time"},
+					'url':{type:"url"}
 				}
 			},
 			signature:{
@@ -168,11 +173,11 @@ var dbs = {
 				fields:{
 					'id':{type:"key"},
 					'petition_id':{type:"key"},
-					'created':{type:""},
-					'name':{type:""},
-					'city':{type:""},
-					'state':{type:""},
-					'zip':{type:""}
+					'created':{type:"time"},
+					'name':{type:"term_text"},
+					'city':{type:"term_text"},
+					'state':{type:"term_text"},
+					'zip':{type:"term_num"}
 				}
 			},
 			signature_counts:{
@@ -181,7 +186,7 @@ var dbs = {
 				fields:{
 					'id':{type:"key"},
 					'petition_id':{type:"key"},
-					'signature_count':{type:""}
+					'signature_count':{type:"value"}
 				}
 			},
 			signature_tmp:{
@@ -190,11 +195,11 @@ var dbs = {
 				fields:{
 					'id':{type:"key"},
 					'petition_id':{type:"key"},
-					'created':{type:""},
-					'name':{type:""},
-					'city':{type:""},
-					'state':{type:""},
-					'zip':{type:""}
+					'created':{type:"time"},
+					'name':{type:"term_text"},
+					'city':{type:"term_text"},
+					'state':{type:"term_text"},
+					'zip':{type:"term_num"}
 				}
 			},
 			temp:{
@@ -202,15 +207,15 @@ var dbs = {
 				route:"/wtp_temp_query",
 				fields:{
 					'id':{type:"key"},
-					'title':{type:""},
-					'status':{type:""},
-					'url':{type:""},
-					'body':{type:""},
-					'created':{type:""},
-					'deadline':{type:""},
-					'is_public':{type:""},
-					'is_signable':{type:""},
-					'signature_threshold':{type:""}
+					'title':{type:"text"},
+					'status':{type:"term_text"},
+					'url':{type:"url"},
+					'body':{type:"text"},
+					'created':{type:"time"},
+					'deadline':{type:"time"},
+					'is_public':{type:"boolean"},
+					'is_signable':{type:"boolean"},
+					'signature_threshold':{type:"value"}
 				}
 			}
 		}	

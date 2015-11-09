@@ -60,12 +60,13 @@ function table_function(table){
 
 	Object.keys(dbs[curDB]['tables'][curTable]['fields']).forEach(function(attribute){
 
-		var attrDiv = $('<div style="display:inline-block;" id='+attribute+'_div></div>');
+		var attrDiv = $('<div style="display:inline-block;margin-left:5px;margin-right:5px;" id='+attribute+'_div></div>');
 
 		attrDiv.appendTo('#attribute_list');
 
-		var checkboxBtn = $('<button class = "btn btn-primary:active" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
+		var checkboxBtn = $('<button style="display:inline-block;"class = "btn btn-primary:active" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
 		    checkboxBtn.appendTo('#'+attribute+'_div');
+ 
 	})
 }
 
@@ -74,10 +75,15 @@ function attr_function(attr){
 	var attrIndex = curAttr.indexOf(attr);
 
 	if(attrIndex == -1){
-		curAttr.push(attr);		
+		curAttr.push(attr);	
+		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
+			var keyBox = $('<input style="display:block;"type=text class="input" id='+attr+'_where placeholder="One (or more) id numbers"> </input>');
+			keyBox.appendTo('#'+attr+'_div');
+		} 
 	}
 	else{
 		curAttr.splice(attrIndex,1);
+		$('#'+attr+'_where').remove();
 	}
 
 
@@ -88,6 +94,8 @@ function attr_function(attr){
 	else{
 		$("#"+attr).removeClass('btn-primary').addClass('btn-primary:active');
 	}
+
+  
 
 
 	console.log(curAttr);
