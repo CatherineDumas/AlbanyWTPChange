@@ -59,8 +59,13 @@ function table_function(table){
 
 
 	Object.keys(dbs[curDB]['tables'][curTable]['fields']).forEach(function(attribute){
+
+		var attrDiv = $('<div style="display:inline-block;" id='+attribute+'_div></div>');
+
+		attrDiv.appendTo('#attribute_list');
+
 		var checkboxBtn = $('<button class = "btn btn-primary:active" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
-		    checkboxBtn.appendTo('#attribute_list');
+		    checkboxBtn.appendTo('#'+attribute+'_div');
 	})
 }
 
