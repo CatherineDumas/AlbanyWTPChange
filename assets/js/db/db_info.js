@@ -4,7 +4,7 @@ var dbs = {
 		name:"Full We The People Data",
 		tables:{
 			wtp_data_issues:{
-				name:"Incomplete Issue Code Crosstable",
+				name:"Incomplete Issue Code Table",
 				route:"/geo_wtp_data_issues_query",
 				fields:{
 					'id':{},
@@ -12,7 +12,7 @@ var dbs = {
 				}
 			},
 			wtp_data_petition_issues:{
-				name:"Petition ID and associated Issue ID",
+				name:"Petition and Issue Crosstable",
 				route:"/geo_wtp_data_petition_issues_query",
 				fields:{
 					'petition_id':{},
@@ -21,7 +21,7 @@ var dbs = {
 				}
 			},
 			wtp_data_petition_responses:{
-				name:"Petition ID and associated Response ID",
+				name:"Petition and Response Crosstable",
 				route:"/geo_wtp_data_petition_responses_query",
 				fields:{
 					'petition_id':{},
@@ -46,7 +46,7 @@ var dbs = {
 				}
 			},
 			wtp_data_responses:{
-				name:"Response ID and URL",
+				name:"Response URL",
 				route:"/geo_wtp_data_responses_query",
 				fields:{
 					'id':{},
@@ -105,14 +105,16 @@ var dbs = {
 		name:"Public We The People Data",
 		tables:{
 			issue:{
-				route:"/wtp_issue_query",
+				name:"Issue Code Table",
+				route:"/wtp_issues_query",
 				fields:{
 					'id':{},
 					'name':{}
 				}
 			},
 			petition:{
-				route:"/wtp_petition_query",
+				name:"Petitions",
+				route:"/wtp_petitions_query",
 				fields:{
 					'id':{},
 					'title':{},
@@ -127,7 +129,8 @@ var dbs = {
 				}
 			},
 			petition_issue:{
-				route:"/wtp_petition_issue_query",
+				name:"Petition and Issue Crosstable",
+				route:"/wtp_petition_issues_query",
 				fields:{
 					'id':{},
 					'petition_id':{},
@@ -135,7 +138,8 @@ var dbs = {
 				}
 			},
 			petition_response:{
-				route:"/wtp_petition_response_query",
+				name:"Petition and Response Crosstable",
+				route:"/wtp_petition_responses_query",
 				fields:{
 					'id':{},
 					'petition_id':{},
@@ -143,7 +147,8 @@ var dbs = {
 				}
 			},
 			response:{
-				route:"/wtp_response_query",
+				name: "Responses",
+				route:"/wtp_responses_query",
 				fields:{
 					'id':{},
 					'responded':{},
@@ -151,7 +156,8 @@ var dbs = {
 				}
 			},
 			signature:{
-				route:"wtp_signature_query",
+				name:"Signatures",
+				route:"wtp_signatures_query",
 				fields:{
 					'id':{},
 					'petition_id':{},
@@ -163,6 +169,7 @@ var dbs = {
 				}
 			},
 			signature_counts:{
+				name:"Signature Count and Petition Crosstable",
 				route:"/wtp_signature_counts_query",
 				fields:{
 					'id':{},
@@ -171,6 +178,7 @@ var dbs = {
 				}
 			},
 			signature_tmp:{
+				name:"Temporary Signature Table",
 				route:"/wtp_signature_tmp_query",
 				fields:{
 					'id':{},
@@ -183,6 +191,7 @@ var dbs = {
 				}
 			},
 			temp:{
+				name:"Temporary Petition Table",
 				route:"/wtp_temp_query",
 				fields:{
 					'id':{},
