@@ -96,12 +96,10 @@ $("#csv").on('click', function(){
 
 	console.log("annyong");
 
-	curAttr = $('.attribute:checkbox:checked').map(function() {
-	    return this.value;
-	}).get();
 
 
-	console.log(curAttr);
+
+	console.log("in CSV button",curAttr);
 
 	var params = {db:curDB,table:curTable,attr:curAttr};
 
@@ -149,9 +147,7 @@ $("#tsv").on('click', function(){
 
 
 
-	curAttr = $('.attribute:checkbox:checked').map(function() {
-	    return this.value;
-	}).get();
+
 
 
 	console.log(curAttr);
