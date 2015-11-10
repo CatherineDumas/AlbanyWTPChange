@@ -78,7 +78,6 @@ var dbs = {
 			}
 		}
 	},
-
 	twitter_data:{
 		name:"Twitter Data",
 		tables:{
@@ -219,5 +218,72 @@ var dbs = {
 				}
 			}
 		}	
-	}
+	},
+	local_wtp:{
+		name:"Local WTP Database",
+		tables:{
+			wtp_data_issues:{
+				name:"Incomplete Issue Code Table",
+				route:"/local_wtp_data_issues_query",
+				fields:{
+					'id':{type:"key"},
+					'name':{type:"term_text"}
+				}
+			},
+			wtp_data_petition_issues:{
+				name:"Petition and Issue Crosstable",
+				route:"/local_wtp_data_petition_issues_query",
+				fields:{
+					'petition_id':{type:"key"},
+					'issue_id':{type:"key"}
+
+				}
+			},
+			wtp_data_petition_responses:{
+				name:"Petition and Response Crosstable",
+				route:"/local_wtp_data_petition_responses_query",
+				fields:{
+					'petition_id':{type:"key"},
+					'response_id':{type:"key"},
+					'association_time':{type:""}
+				}
+			},
+			wtp_data_petitions:{
+				name:"Petitions",
+				route:"/local_wtp_data_petitions_query",
+				fields:{
+					'serial':{type:"key"},
+					'id':{type:"key"},
+					'type':{type:"term_text"},
+					'title':{type:"text"},
+					'body':{type:"text"},
+					'signature_threshold':{type:"value"},
+					'signature_count':{type:"value"},
+					'url':{type:"url"},
+					'deadline':{type:"time"},
+					'created':{type:"time"}
+				}
+			},
+			wtp_data_responses:{
+				name:"Response URL",
+				route:"/local_wtp_data_responses_query",
+				fields:{
+					'id':{type:"key"},
+					'url':{type:"url"}
+				}
+			},
+			wtp_data_signatures:{
+				name:"Signatures",
+				route:"/local_wtp_data_signatures_query",
+				fields:{
+					'id':{type:"key"},
+					'petition_id':{type:"key"},
+					'type':{type:"term_text"},
+					'name':{type:"term_text"},
+					'zip':{type:"term_num"},
+					'created':{type:"time"}
+				}
+			}
+		}
+	},
 }
