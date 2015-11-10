@@ -60,7 +60,7 @@ function table_function(table){
 
 	Object.keys(dbs[curDB]['tables'][curTable]['fields']).forEach(function(attribute){
 
-		var attrDiv = $('<div style="display:inline-block;vertical-align:text-top;margin-left:10px;margin-right:10px;" id='+attribute+'_div></div>');
+		var attrDiv = $('<div style="display:inline-block;vertical-align:text-top;" id='+attribute+'_div></div>');
 
 		attrDiv.appendTo('#attribute_list');
 
@@ -101,11 +101,11 @@ function attr_function(attr){
 //Creates the appropriate where_clause input box for the given (selected) attribute
 function where_attr(attr){
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
-			var keyBox = $('<input style="margin:0 auto;display:block;"type=text class="input" id='+attr+'_where placeholder="  One (or more) id numbers"> </input>');
+			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  One (or more) id numbers"> </input>');
 			keyBox.appendTo('#'+attr+'_div');
 		}
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "value"){
-			var keyBox = $('<input size=8 style="margin:0 auto; display:block;"type=text class="input" id='+attr+'_where placeholder="Number"> </input>');
+			var keyBox = $('<input size=8 style="margin:0 auto; display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="Number"> </input>');
 			keyBox.appendTo('#'+attr+'_div');
 		}
 }
