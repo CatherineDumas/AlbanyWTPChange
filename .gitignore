@@ -116,6 +116,6 @@ npm-debug.log
 nbproject
 .idea
 .node_history
-.sql
-.zip
+*.sql
+*.zip
 data.sql.zip
