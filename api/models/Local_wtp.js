@@ -1,5 +1,5 @@
 module.exports = {
-	connection:"Wtp",
+	connection:"Local_wtp",
 	attributes:{
 		'id':'Char(18)',
 		'title':'Char(18)',

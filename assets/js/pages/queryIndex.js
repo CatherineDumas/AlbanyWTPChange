@@ -64,7 +64,7 @@ function table_function(table){
 
 		attrDiv.appendTo('#attribute_list');
 
-		var checkboxBtn = $('<button class = "btn btn-primary:active" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
+		var checkboxBtn = $('<button style="margin-bottom:5px;" class = "btn btn-primary:active" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
 		    checkboxBtn.appendTo('#'+attribute+'_div');
  
 	})
@@ -101,7 +101,7 @@ function attr_function(attr){
 //Creates the appropriate where_clause input box for the given (selected) attribute
 function where_attr(attr){
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
-			var keyBox = $('<input style="margin:0 auto;display:block;"type=text class="input" id='+attr+'_where placeholder="One (or more) id numbers"> </input>');
+			var keyBox = $('<input style="margin:0 auto;display:block;"type=text class="input" id='+attr+'_where placeholder="  One (or more) id numbers"> </input>');
 			keyBox.appendTo('#'+attr+'_div');
 		}
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "value"){

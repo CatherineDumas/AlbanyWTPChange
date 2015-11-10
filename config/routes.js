@@ -55,6 +55,7 @@ module.exports.routes = {
   '/geo_wtp_data_signatures_query' : 'Geo_Wtp_Controller.Wtp_data_signatures',
 
 
+
   /***************************************************************************
   *
   * twitter_data routes
@@ -66,13 +67,12 @@ module.exports.routes = {
   '/twitter_data_urls_query' : 'Twitter_Data_Controller.Urls',
 
 
+
   /***************************************************************************
   *
-  * geo_wtp routes
+  * wtp routes
   *
   ***************************************************************************/
-
-
 
 
   '/wtp_issues_query' : 'Wtp_Controller.Wtp_issues',
@@ -92,7 +92,30 @@ module.exports.routes = {
 
   '/wtp_signature_tmp_query' : 'Wtp_Controller.Wtp_signature_tmp',
   
-  '/wtp_temp_query' : 'Wtp_Controller.Wtp_temp'
+  '/wtp_temp_query' : 'Wtp_Controller.Wtp_temp',
+
+
+  /***************************************************************************
+  *
+  * local_wtp routes
+  *
+  ***************************************************************************/
+
+  '/Local_wtp_data_issues_query' : 'Local_Wtp_Controller.Wtp_data_issues',
+
+  '/Local_wtp_data_petition_issues_query' : 'Local_Wtp_Controller.Wtp_data_petition_issues',
+
+  '/Local_wtp_data_petition_responses_query' : 'Local_Wtp_Controller.Wtp_data_petition_responses',
+
+  '/Local_wtp_data_petitions_query' : 'Local_Wtp_Controller.Wtp_data_petitions',
+
+  '/Local_wtp_data_responses_query' : 'Local_Wtp_Controller.Wtp_data_responses',
+
+  '/Local_wtp_data_signatures_query' : 'Local_Wtp_Controller.Wtp_data_signatures'
+
+
+
+
 
   /***************************************************************************
   *                                                                          *
