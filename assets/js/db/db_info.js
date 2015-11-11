@@ -136,7 +136,8 @@ var dbs = {
 					'deadline':{type:"time"},
 					'is_public':{type:"boolean"},
 					'is_signable':{type:"boolean"},
-					'signature_threshold':{type:"value"}
+					'signature_threshold':{type:"value"},
+					'categories':{type:"term_text"}
 				}
 			},
 			petition_issue:{

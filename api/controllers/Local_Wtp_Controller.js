@@ -219,7 +219,7 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_signatures LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_signatures LIMIT 1000";
 
 		//var finalQuery = 'Select * from wtp_data_signatures LIMIT 100';
 
