@@ -1,5 +1,3 @@
-
-
 //Check the parameters based on the DB and table
 //Returns true if all parameters have been verified, false otherwise
 function checkParams(params){
