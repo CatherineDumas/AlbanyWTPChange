@@ -132,14 +132,39 @@ $("#csv").on('click', function(){
 
 	//Run function to error-check parameters based on the DB and Table
 	if(checkParams(params)){
-		csvQuery(params);		
+		csvQuery(params,processData);		
 	}
 
 
 
 })
 
-function csvQuery(params){
+
+//Performs post-processing on certain fields/types
+function processData(dataFromServer){
+
+
+	Object.keys(dataFromServer[0]).forEach(function(attrName){
+
+		//if column name = created, we want to convert it to a date
+		if(attrName == "created"){
+
+			Object.keys(dataFromServer).forEach(function(row){
+				var date = new Date(dataFromServer[row][attrName]*1000);
+
+				dataFromServer[row][attrName] = date.toString();	
+			})
+		}
+
+	});
+
+	return dataFromServer;
+
+}
+
+
+
+function csvQuery(params,cb){
 	console.log(params)
 	// params.db = params.db.split(' ').join('_');
 	// params.table = params.table.split(' ').join('_');
@@ -156,22 +181,18 @@ function csvQuery(params){
 	d3.json(url)
 	.post(JSON.stringify({params:params}),function(err,dataFromServer){
 
+		//cb = processData
+		var processData = cb(dataFromServer);
 
-		console.log("data",dataFromServer);
-		JSONToCSVConvertor(dataFromServer, fileName, true);
+		console.log("data",processData);
+
+		JSONToCSVConvertor(processData, fileName, true);
 	})
 
 }
 
 //Jquery to execute query. Gets all selected attributes
 $("#tsv").on('click', function(){
-
-
-
-
-
-
-
 	console.log(curAttr);
 
 	var params = {db:curDB,table:curTable,attr:curAttr};
@@ -183,14 +204,11 @@ $("#tsv").on('click', function(){
 
 	//Run function to error-check parameters based on the DB and Table
 	if(checkParams(params)){
-		tsvQuery(params);		
+		tsvQuery(params,processData);		
 	}
-
-
-
 })
 
-function tsvQuery(params){
+function tsvQuery(params,cb){
 	console.log(params)
 	// params.db = params.db.split(' ').join('_');
 	// params.table = params.table.split(' ').join('_');
@@ -207,10 +225,11 @@ function tsvQuery(params){
 	d3.json(url)
 	.post(JSON.stringify({params:params}),function(err,dataFromServer){
 
+		//cb = processData
+		var processData = cb(dataFromServer);
 
-
-		console.log("data",dataFromServer);
-		JSONToTSVConvertor(dataFromServer, fileName, true);
+		console.log("data",processData);
+		JSONToTSVConvertor(processData, fileName, true);
 	})
 
 }
