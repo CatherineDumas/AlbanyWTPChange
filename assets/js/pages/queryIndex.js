@@ -132,7 +132,7 @@ $("#csv").on('click', function(){
 
 	//Run function to error-check parameters based on the DB and Table
 	if(checkParams(params)){
-		csvQuery(params,processData);		
+		dbQuery(params,"csv",processData);		
 	}
 
 
@@ -164,7 +164,7 @@ function processData(dataFromServer){
 
 
 
-function csvQuery(params,cb){
+function dbQuery(params,type,cb){
 	console.log(params)
 	// params.db = params.db.split(' ').join('_');
 	// params.table = params.table.split(' ').join('_');
@@ -186,7 +186,13 @@ function csvQuery(params,cb){
 
 		console.log("data",processData);
 
-		JSONToCSVConvertor(processData, fileName, true);
+		if(type == "csv"){
+			JSONToCSVConvertor(processData, fileName, true);			
+		}
+		else{
+			JSONToTSVConvertor(processData, fileName, true);
+		}
+
 	})
 
 }
@@ -204,35 +210,9 @@ $("#tsv").on('click', function(){
 
 	//Run function to error-check parameters based on the DB and Table
 	if(checkParams(params)){
-		tsvQuery(params,processData);		
+		dbQuery(params,"tsv",processData);		
 	}
 })
-
-function tsvQuery(params,cb){
-	console.log(params)
-	// params.db = params.db.split(' ').join('_');
-	// params.table = params.table.split(' ').join('_');
-
-	// console.log(params)
-
-	var url  = dbs[params.db]['tables'][params.table].route
-	console.log("URL in execQuery", url);
-
-	var fileName = params.db + params.table;
-
-
-
-	d3.json(url)
-	.post(JSON.stringify({params:params}),function(err,dataFromServer){
-
-		//cb = processData
-		var processData = cb(dataFromServer);
-
-		console.log("data",processData);
-		JSONToTSVConvertor(processData, fileName, true);
-	})
-
-}
 
 
 //Check the parameters based on the DB and table
