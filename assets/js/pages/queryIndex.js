@@ -108,12 +108,10 @@ function attr_function(attr){
 
 //Creates the appropriate where_clause input box for the given (selected) attribute
 function where_attr(attr){
-		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
+
+
+		if(attr == "id"){
 			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  One (or more) id numbers"> </input>');
-			keyBox.appendTo('#'+attr+'_div');
-		}
-		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "value"){
-			var keyBox = $('<input size=8 style="margin:0 auto; display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="Number"> </input>');
 			keyBox.appendTo('#'+attr+'_div');
 		}
 }
