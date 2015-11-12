@@ -127,7 +127,7 @@ function where_attr(attr){
 		}
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "time"){
 
-			var dateBox = $('<aside class="widget"> <p>Date: <input id=input_'+attr+' type="text" id="widget_"'+attr+'></p></aside>')
+			var dateBox = $('<aside class="widget"> <p><input style="border:2px solid black;" id=input_'+attr+' type="text" id="widget_"'+attr+'></p></aside>')
 			dateBox.appendTo('#'+attr+'_where_div');
 			$("#input_"+attr).datepicker();
 		}
