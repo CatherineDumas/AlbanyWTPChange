@@ -13,3 +13,8 @@ If successful, can connect through localhost:9999
 
 sudo lsof -i -n | egrep '\<ssh\>'
 Will show you open tunnels
+
+
+
+
+NEED TO REMOVE require(jquery) from jquery-ui in node modules

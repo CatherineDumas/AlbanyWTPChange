@@ -2,6 +2,8 @@ var curDB;
 var curTable;
 var curAttr = [];
 
+
+
 //Creates buttons for every DB
 Object.keys(dbs).forEach(function(db){
 
@@ -14,6 +16,7 @@ Object.keys(dbs).forEach(function(db){
 
 
 })
+
 
 //Function responsible for what happens when a DB button is clicked
 function db_function(db){
@@ -90,9 +93,13 @@ function attr_function(attr){
 		where_attr(attr);
 	}
 	else{
-		//If it was already selected, remove it from the array and remove the input field
+		//If it was already selected, remove it from the array and remove the input div
 		curAttr.splice(attrIndex,1);
-		$('#'+attr+'_where').remove();
+		$("#"+attr+'_where_div').empty();
+		// $('#'+attr+'_where').remove();
+		// $("#input_"+attr).datepicker('hide');
+		// $("#input_"+attr).datepicker('destroy');
+
 	}
 
 	//Toggles the color of the button
@@ -109,10 +116,20 @@ function attr_function(attr){
 //Creates the appropriate where_clause input box for the given (selected) attribute
 function where_attr(attr){
 
+		var whereAttrDiv = $('<div style="vertical-align:text-top;" id='+attr+'_where_div></div>');
+
+		whereAttrDiv.appendTo('#'+attr+'_div');
+
 
 		if(attr == "id"){
 			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  One (or more) id numbers"> </input>');
-			keyBox.appendTo('#'+attr+'_div');
+			keyBox.appendTo('#'+attr+'_where_div');
+		}
+		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "time"){
+
+			var dateBox = $('<aside class="widget"> <p>Date: <input id=input_'+attr+' type="text" id="widget_"'+attr+'></p></aside>')
+			dateBox.appendTo('#'+attr+'_where_div');
+			$("#input_"+attr).datepicker();
 		}
 }
 
