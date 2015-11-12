@@ -24,7 +24,8 @@ module.exports = function(grunt) {
 				dest: '.tmp/public'
 			},
 			{ '.tmp/public/linker/js/d3.min.js': './bower_components/d3/d3.min.js' },
-			{ '.tmp/public/linker/js/jquery.min.js': './bower_components/jquery/dist/jquery.min.js' }]
+			{ '.tmp/public/linker/js/jquery.min.js': './bower_components/jquery/dist/jquery.min.js' },
+			{ '.tmp/public/linker/js/jquery-ui.js': './node_modules/jquery-ui/jquery-ui.js' }]
 		},
 		build: {
 			files: [{
