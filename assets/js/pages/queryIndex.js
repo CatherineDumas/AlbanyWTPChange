@@ -130,6 +130,15 @@ function where_attr(attr){
 			var dateBox = $('<aside class="widget"> <p><input style="border:2px solid black;" id=input_'+attr+' type="text" id="widget_"'+attr+'></p></aside>')
 			dateBox.appendTo('#'+attr+'_where_div');
 			$("#input_"+attr).datepicker();
+
+			var dateBtn1 = $('<input style="margin-left:.4em;" type="radio" name="dateRange" id="dateRange" value="prior" >Prior to</input>')
+			var dateBtn2 = $('<input style="margin-left:.4em;" type="radio" name="dateRange" id="dateRange" value="on" >On</input>')
+			var dateBtn3 = $('<input style="margin-left:.4em;" type="radio" name="dateRange" id="dateRange" value="after" >After</input>')
+
+			dateBtn1.appendTo('#'+attr+'_where_div');
+			dateBtn2.appendTo('#'+attr+'_where_div');
+			dateBtn3.appendTo('#'+attr+'_where_div');
+
 		}
 }
 
