@@ -127,13 +127,13 @@ function where_attr(attr){
 		}
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "time"){
 
-			var dateBox = $('<aside class="widget"> <p><input style="border:2px solid black;" id=input_'+attr+' type="text" id="widget_"'+attr+'></p></aside>')
+			var dateBox = $('<aside class="widget"> <p><input style="border:2px solid black;" id='+attr+'_where type="text" id="widget_"'+attr+'></p></aside>')
 			dateBox.appendTo('#'+attr+'_where_div');
-			$("#input_"+attr).datepicker();
+			$("#"+attr+"_where").datepicker();
 
-			var dateBtn1 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="dateRange'+attr+'" value="prior" >Prior to</input>')
-			var dateBtn2 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="dateRange'+attr+'" value="on" >On</input>')
-			var dateBtn3 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="dateRange'+attr+'" value="after" >After</input>')
+			var dateBtn1 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="prior" >Prior to</input>')
+			var dateBtn2 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="on" >On</input>')
+			var dateBtn3 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="after" >After</input>')
 
 			dateBtn1.appendTo('#'+attr+'_where_div');
 			dateBtn2.appendTo('#'+attr+'_where_div');
