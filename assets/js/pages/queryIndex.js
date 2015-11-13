@@ -121,7 +121,7 @@ function where_attr(attr){
 		whereAttrDiv.appendTo('#'+attr+'_div');
 
 
-		if(attr == "id"){
+		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
 			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  One (or more) id numbers"> </input>');
 			keyBox.appendTo('#'+attr+'_where_div');
 		}

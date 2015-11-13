@@ -22,7 +22,26 @@ module.exports = {
 
 		console.log("Query Params",queryAttr);
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_issues LIMIT 100";
+		var whereClause = "";
+		if(params.where.length == 0){
+
+		}
+		else if(params.where.length ==1){
+			whereClause = "where " + params.where[0] + " ";
+		}
+		else{
+			whereClause = "where ";
+			params.where.forEach(function(clause){
+				if(params.where.indexOf(clause) == params.where.length - 1){
+					whereClause = whereClause + clause + " ";	
+				}
+				else{
+					whereClause = whereClause + clause + " and ";
+				}
+			});
+
+		}
+		var newQuery = "Select " + queryAttr + " from wtp_data_issues " + whereClause + "LIMIT 100";
 
 
 
@@ -65,7 +84,27 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_petition_issues LIMIT 100";
+		var whereClause = "";
+		if(params.where.length == 0){
+
+		}
+		else if(params.where.length ==1){
+			whereClause = "where " + params.where[0] + " ";
+		}
+		else{
+			whereClause = "where ";
+			params.where.forEach(function(clause){
+				if(params.where.indexOf(clause) == params.where.length - 1){
+					whereClause = whereClause + clause + " ";	
+				}
+				else{
+					whereClause = whereClause + clause + " and ";
+				}
+			});
+
+		}
+		var newQuery = "Select " + queryAttr + " from wtp_data_petition_issues " + whereClause + "LIMIT 100";
+
 
 		//var finalQuery = 'Select * from wtp_data_petition_issues LIMIT 100';
 
@@ -103,9 +142,26 @@ module.exports = {
 
 		console.log("Query Params",queryAttr);
 
+		var whereClause = "";
+		if(params.where.length == 0){
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_petition_responses LIMIT 100";
+		}
+		else if(params.where.length ==1){
+			whereClause = "where " + params.where[0] + " ";
+		}
+		else{
+			whereClause = "where ";
+			params.where.forEach(function(clause){
+				if(params.where.indexOf(clause) == params.where.length - 1){
+					whereClause = whereClause + clause + " ";	
+				}
+				else{
+					whereClause = whereClause + clause + " and ";
+				}
+			});
 
+		}
+		var newQuery = "Select " + queryAttr + " from wtp_data_petition_responses " + whereClause + "LIMIT 100";
 		//var finalQuery = 'Select * from wtp_data_petition_responses LIMIT 100';
 
 		console.log("In the controller local_wtp_data_petition_responses");
@@ -198,7 +254,26 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_responses LIMIT 100";
+		var whereClause = "";
+		if(params.where.length == 0){
+
+		}
+		else if(params.where.length ==1){
+			whereClause = "where " + params.where[0] + " ";
+		}
+		else{
+			whereClause = "where ";
+			params.where.forEach(function(clause){
+				if(params.where.indexOf(clause) == params.where.length - 1){
+					whereClause = whereClause + clause + " ";	
+				}
+				else{
+					whereClause = whereClause + clause + " and ";
+				}
+			});
+
+		}
+		var newQuery = "Select " + queryAttr + " from wtp_data_responses " + whereClause + "LIMIT 100";
 
 		//var finalQuery = 'Select * from wtp_data_responses LIMIT 100';
 
@@ -237,7 +312,26 @@ module.exports = {
 		console.log("Query Params",queryAttr);
 
 
-		var newQuery = "Select " + queryAttr + " from wtp_data_signatures LIMIT 1000";
+		var whereClause = "";
+		if(params.where.length == 0){
+
+		}
+		else if(params.where.length ==1){
+			whereClause = "where " + params.where[0] + " ";
+		}
+		else{
+			whereClause = "where ";
+			params.where.forEach(function(clause){
+				if(params.where.indexOf(clause) == params.where.length - 1){
+					whereClause = whereClause + clause + " ";	
+				}
+				else{
+					whereClause = whereClause + clause + " and ";
+				}
+			});
+
+		}
+		var newQuery = "Select " + queryAttr + " from wtp_data_signatures " + whereClause + "LIMIT 100";
 
 		//var finalQuery = 'Select * from wtp_data_signatures LIMIT 100';
 
