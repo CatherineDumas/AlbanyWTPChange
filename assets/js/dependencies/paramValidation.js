@@ -17,8 +17,13 @@ function checkParams(params){
 
 	//Need to add something to params
 	whereParams = getWhere(params.attr);
-
-	return false;
+	
+	if(paramsStatus){
+		return whereParams;
+	}
+	else{
+		return false;
+	}
 }
 
 //Takes in an array of attributes
@@ -72,7 +77,7 @@ function getWhere(attributes){
 
 		
 	})
-
+	return whereClauses;
 }
 
 //Checks to make sure DB is a legit DB or not

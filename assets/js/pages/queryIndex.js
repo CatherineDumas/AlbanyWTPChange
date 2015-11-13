@@ -155,11 +155,11 @@ $("#csv").on('click', function(){
 	if(params.attr == null){
 		params.attr = "all";
 	}
-
+	
+	params.where = checkParams(params);
 	//Run function to error-check parameters based on the DB and Table
-	if(checkParams(params)){
-		dbQuery(params,"csv",processData);		
-	}
+	dbQuery(params,"csv",processData);		
+	
 })
 
 //Jquery to execute query. Gets all selected attributes
@@ -171,9 +171,8 @@ $("#tsv").on('click', function(){
 	if(params.attr == null){
 		params.attr = "all";
 	}
-
+	params.where = checkParams(params);
 	//Run function to error-check parameters based on the DB and Table
-	if(checkParams(params)){
-		dbQuery(params,"tsv",processData);		
-	}
+	dbQuery(params,"tsv",processData);		
+	
 })
