@@ -1,18 +1,30 @@
 //Performs post-processing on certain fields/types
 function processData(dataFromServer){
-	Object.keys(dataFromServer[0]).forEach(function(attrName){
 
-		//if column name = created, we want to convert it to a date
-		if(attrName == "created"){
-			Object.keys(dataFromServer).forEach(function(row){
-				var date = new Date(dataFromServer[row][attrName]*1000);
+	if(dataFromServer[0] == null){
+		$("#success").empty();
+		$("#error").text("No results match your query");
+		return false;
+	}
+	else{
+		$("#error").empty();
+		$("#status").text("Results downloading");
+		Object.keys(dataFromServer[0]).forEach(function(attrName){
 
-				dataFromServer[row][attrName] = date.toString();	
-			})
-		}
-	});
+			//if column name = created, we want to convert it to a date
+			if(attrName == "created"){
+				Object.keys(dataFromServer).forEach(function(row){
+					var date = new Date(dataFromServer[row][attrName]*1000);
 
-	return dataFromServer;
+					dataFromServer[row][attrName] = date.toString();	
+				})
+			}
+		});
+
+
+		return dataFromServer;		
+	}
+
 }
 
 
@@ -32,13 +44,19 @@ function dbQuery(params,type,cb){
 
 		var processData = cb(dataFromServer);
 
-		console.log("data",processData);
+		if(processData == false){
 
-		if(type == "csv"){
-			JSONToCSVConvertor(processData, fileName, true);			
 		}
 		else{
-			JSONToTSVConvertor(processData, fileName, true);
+			console.log("data",processData);
+
+			if(type == "csv"){
+				JSONToCSVConvertor(processData, fileName, true);			
+			}
+			else{
+				JSONToTSVConvertor(processData, fileName, true);
+			}			
 		}
+
 	})
 }
