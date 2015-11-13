@@ -52,7 +52,7 @@ var dbs = {
 					'signature_threshold':{type:"value"},
 					'signature_count':{type:"value"},
 					'url':{type:"url"},
-					'deadline':{type:"time"},
+					'deadline':{type:"term_num"},
 					'created':{type:"time"}
 				}
 			},
@@ -133,7 +133,7 @@ var dbs = {
 					'url':{type:"url"},
 					'body':{type:"text"},
 					'created':{type:"time"},
-					'deadline':{type:"time"},
+					'deadline':{type:"term_num"},
 					'is_public':{type:"boolean"},
 					'is_signable':{type:"boolean"},
 					'signature_threshold':{type:"value"},
@@ -212,7 +212,7 @@ var dbs = {
 					'url':{type:"url"},
 					'body':{type:"text"},
 					'created':{type:"time"},
-					'deadline':{type:"time"},
+					'deadline':{type:"term_num"},
 					'is_public':{type:"boolean"},
 					'is_signable':{type:"boolean"},
 					'signature_threshold':{type:"value"}
@@ -261,7 +261,7 @@ var dbs = {
 					'signature_threshold':{type:"value"},
 					'signature_count':{type:"value"},
 					'url':{type:"url"},
-					'deadline':{type:"time"},
+					'deadline':{type:"term_num"},
 					'created':{type:"time"}
 				}
 			},
