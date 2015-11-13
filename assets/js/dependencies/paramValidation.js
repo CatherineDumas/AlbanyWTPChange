@@ -24,6 +24,9 @@ function checkParams(params){
 //Takes in an array of attributes
 function getWhere(attributes){
 
+	var whereClauses = [];
+	var clause;
+
 	console.log(attributes);
 
 	attributes.forEach(function(attr){
@@ -38,16 +41,36 @@ function getWhere(attributes){
 
 			//There will be a radio button along with the input for time
 			if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "time"){
-				console.log(curAttr[0].value);	
+
+				origDate = curAttr[0].value;
+
+				var yearMonDay = "";
+
+				yearMonDay = yearMonDay + origDate.substring(6,10) + "/" + origDate.substring(0,2) +"/" + origDate.substring(3,5);
+				console.log(yearMonDay);
+
+				var timeVal = Date.parse(yearMonDay)/1000 
+
 				var buttonValue = $("input:radio[name='dateRange"+attr+"']:checked").val();	
-				console.log(buttonValue);	
-			}
-			else{
+
+				clause = attr + " " + buttonValue + " " + timeVal;
+				console.log(clause);
+				whereClauses.push(clause);
 
 			}
+			else if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
+				var keyVal=curAttr[0].value;
+
+				clause = attr + " = " + keyVal;
+
+				console.log(clause);
+				whereClauses.push(clause);
+			}
+
+			}
 
 
-		}
+		
 	})
 
 }
