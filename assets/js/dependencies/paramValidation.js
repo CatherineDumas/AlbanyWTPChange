@@ -75,8 +75,12 @@ function getWhere(attributes){
 				}
 				else if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
 					var textVal = curAttr[0].value;
-					clause = attr+ " like '%" +textVal+ "%' ";
-					whereClauses.push(clause);
+					var arrayOfStrings = textVal.split(",");
+					arrayOfStrings.forEach(function(keyword){
+						clause = attr+ " like '%" +keyword+ "%' ";
+						whereClauses.push(clause);						
+					});
+
 				}
 			}
 
