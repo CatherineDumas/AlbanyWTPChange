@@ -141,7 +141,7 @@ function where_attr(attr){
 
 		}
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
-			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  Keywords"> </input>');
+			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  Keywords separated by commas"> </input>');
 			keyBox.appendTo('#'+attr+'_where_div');
 		}
 }
