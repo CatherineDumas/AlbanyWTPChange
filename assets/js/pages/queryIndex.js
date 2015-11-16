@@ -140,6 +140,10 @@ function where_attr(attr){
 			dateBtn3.appendTo('#'+attr+'_where_div');
 
 		}
+		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
+			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  Keywords"> </input>');
+			keyBox.appendTo('#'+attr+'_where_div');
+		}
 }
 
 
