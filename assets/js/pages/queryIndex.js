@@ -162,6 +162,7 @@ $("#csv").on('click', function(){
 	
 	params.where = checkParams(params);
 	//Run function to error-check parameters based on the DB and Table
+	console.log(params);
 	dbQuery(params,"csv",processData);		
 	
 })
