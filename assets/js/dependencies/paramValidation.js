@@ -17,8 +17,9 @@ function checkParams(params){
 
 	//Need to add something to params
 	whereParams = getWhere(params.attr);
-	
+	console.log("checkParams " + whereParams);
 	if(paramsStatus){
+		console.log("in if");
 		return whereParams;
 	}
 	else{
@@ -70,6 +71,11 @@ function getWhere(attributes){
 					clause = attr + " = '" + keyVal+"'";
 
 					console.log(clause);
+					whereClauses.push(clause);
+				}
+				else if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
+					var textVal = curAttr[0].value;
+					clause = attr+ " like '%" +textVal+ "%' ";
 					whereClauses.push(clause);
 				}
 			}
