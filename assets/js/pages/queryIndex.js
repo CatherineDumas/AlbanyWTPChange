@@ -116,7 +116,7 @@ function attr_function(attr){
 //Creates the appropriate where_clause input box for the given (selected) attribute
 function where_attr(attr){
 
-		var whereAttrDiv = $('<div style="vertical-align:text-top;" id='+attr+'_where_div></div>');
+		var whereAttrDiv = $('<div style="vertical-align:text-top;position:relative;" id='+attr+'_where_div></div>');
 
 		whereAttrDiv.appendTo('#'+attr+'_div');
 
@@ -131,21 +131,42 @@ function where_attr(attr){
 			dateBox.appendTo('#'+attr+'_where_div');
 			$("#"+attr+"_where").datepicker();
 
-			var dateBtn1 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="<" >Prior to</input>')
-			var dateBtn2 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="=" >On</input>')
-			var dateBtn3 = $('<input style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value=">" >After</input>')
+			var dateBtn1 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="<" >Prior to</input>');
+			var dateBtn2 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="=" >On</input>');
+			var dateBtn3 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value=">" >After</input>');
+			var dateBtn4 = $('<input onclick=between('+attr+') style="margin-left:.4em; margin-bottom:1em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="between" >Between</input>');
 
 			dateBtn1.appendTo('#'+attr+'_where_div');
 			dateBtn2.appendTo('#'+attr+'_where_div');
 			dateBtn3.appendTo('#'+attr+'_where_div');
+			dateBtn4.appendTo('#'+attr+'_where_div');
 
 		}
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
 			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  Keywords separated by commas"> </input>');
 			keyBox.appendTo('#'+attr+'_where_div');
 		}
+
 }
 
+//Deals with creating a second calandar for date ranges
+function between(attr){
+
+	var buttonValue = $("input:radio[name='dateRange"+attr.id+"']:checked").val();	
+
+	if(buttonValue == "between"){
+			console.log(attr.id);
+			var dateBox2 = $('<aside class="widget"> <p><input style="border:2px solid black;" id='+attr.id+'_where2 type="text" id="widget_2_"'+attr.id+'></p></aside>')
+			dateBox2.appendTo('#'+attr.id+'_where_div');
+			$("#"+attr.id+"_where2").datepicker();		
+	}
+	else{
+		if($("#"+attr.id+"_where2") != null){
+			$("#"+attr.id+"_where2").remove();
+		}
+	}
+
+}
 
 
 //Jquery to execute query. Gets all selected attributes
