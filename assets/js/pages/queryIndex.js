@@ -116,7 +116,7 @@ function attr_function(attr){
 //Creates the appropriate where_clause input box for the given (selected) attribute
 function where_attr(attr){
 
-		var whereAttrDiv = $('<div style="vertical-align:text-top;position:relative;" id='+attr+'_where_div></div>');
+		var whereAttrDiv = $('<div style="vertical-align:text-top;" id='+attr+'_where_div></div>');
 
 		whereAttrDiv.appendTo('#'+attr+'_div');
 
@@ -134,7 +134,7 @@ function where_attr(attr){
 			var dateBtn1 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="<" >Prior to</input>');
 			var dateBtn2 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="=" >On</input>');
 			var dateBtn3 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value=">" >After</input>');
-			var dateBtn4 = $('<input onclick=between('+attr+') style="margin-left:.4em; margin-bottom:1em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="between" >Between</input>');
+			var dateBtn4 = $('<input onclick=between('+attr+') style="margin-left:.4em; margin-bottom:1em" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="between" >Between</input>');
 
 			dateBtn1.appendTo('#'+attr+'_where_div');
 			dateBtn2.appendTo('#'+attr+'_where_div');
