@@ -68,14 +68,19 @@ function getWhere(attributes){
 				else if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
 					var keyVal=curAttr[0].value;
 
-					clause = attr + " = '" + keyVal+"'";
-
+				/*	var arrayOfIds = keyVal.split(",");
+					arrayOfIds.forEach(function(id){
+						clause = attr + " = '" + id+"'";
+						whereClauses.push(clause);						
+					}); */
 					console.log(clause);
 					whereClauses.push(clause);
 				}
 				else if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
 					var textVal = curAttr[0].value;
+				
 					var arrayOfStrings = textVal.split(",");
+				
 					arrayOfStrings.forEach(function(keyword){
 						clause = attr+ " like '%" +keyword+ "%' ";
 						whereClauses.push(clause);						

@@ -124,6 +124,12 @@ function where_attr(attr){
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
 			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  One (or more) id numbers"> </input>');
 			keyBox.appendTo('#'+attr+'_where_div');
+
+			var idBtn1 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="andor'+attr+'" id="'+attr+'_where" value="=" >and</input>');
+			var idBtn2 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="andor'+attr+'" id="'+attr+'_where" value="=" >Or</input>');
+
+			idBtn1.appendTo('#'+attr+'_where_div');
+			idBtn2.appendTo('#'+attr+'_where_div');
 		}
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "time"){
 
@@ -136,6 +142,7 @@ function where_attr(attr){
 			var dateBtn3 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value=">" >After</input>');
 			var dateBtn4 = $('<input onclick=between('+attr+') style="margin-left:.4em; margin-bottom:1em" type="radio" name="dateRange'+attr+'" id="'+attr+'_where" value="between" >Between</input>');
 
+			
 			dateBtn1.appendTo('#'+attr+'_where_div');
 			dateBtn2.appendTo('#'+attr+'_where_div');
 			dateBtn3.appendTo('#'+attr+'_where_div');
@@ -145,13 +152,18 @@ function where_attr(attr){
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
 			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  Keywords separated by commas"> </input>');
 			keyBox.appendTo('#'+attr+'_where_div');
+
+			var keywordBtn1 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="keyword'+attr+'" id="'+attr+'_where" value="=" >and</input>');
+			var keywordBtn2 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="keyword'+attr+'" id="'+attr+'_where" value="=" >Or</input>');
+
+			keywordBtn1.appendTo('#'+attr+'_where_div');
+			keywordBtn2.appendTo('#'+attr+'_where_div');
 		}
 
 }
 
 //Deals with creating a second calandar for date ranges
 function between(attr){
-
 	var buttonValue = $("input:radio[name='dateRange"+attr.id+"']:checked").val();	
 
 	if(buttonValue == "between"){
@@ -165,7 +177,6 @@ function between(attr){
 			$("#"+attr.id+"_where2").remove();
 		}
 	}
-
 }
 
 
