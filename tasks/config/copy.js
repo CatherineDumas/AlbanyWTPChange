@@ -23,8 +23,8 @@ module.exports = function(grunt) {
 				src: ['**/*.!(coffee|less)'],
 				dest: '.tmp/public'
 			},
-			{ '.tmp/public/linker/js/d3.min.js': './bower_components/d3/d3.min.js' },
-			{ '.tmp/public/linker/js/jquery.min.js': './bower_components/jquery/dist/jquery.min.js' },
+			{ '.tmp/public/linker/js/d3.min.js': './node_modules/d3/d3.min.js' },
+			{ '.tmp/public/linker/js/jquery.min.js': './node_modules/jquery/dist/jquery.min.js' },
 			{ '.tmp/public/linker/js/jquery-ui.js': './node_modules/jquery-ui/jquery-ui.js' },
 			{ '.tmp/public/styles/jquery.ui.datepicker.css': './node_modules/jquery-ui/themes/base/jquery.ui.datepicker.css'}]
 		},
