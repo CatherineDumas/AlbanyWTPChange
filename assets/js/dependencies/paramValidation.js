@@ -51,16 +51,27 @@ function getWhere(attributes){
 
 					origDate = curAttr[0].value;
 
-					var yearMonDay = "";
+					var yearMonDay_orig = "";
 
-					yearMonDay = yearMonDay + origDate.substring(6,10) + "/" + origDate.substring(0,2) +"/" + origDate.substring(3,5);
-					console.log(yearMonDay);
+					yearMonDay_orig = yearMonDay_orig + origDate.substring(6,10) + "/" + origDate.substring(0,2) +"/" + origDate.substring(3,5);
+					console.log(yearMonDay_orig);
 
-					var timeVal = Date.parse(yearMonDay)/1000 
+					var timeVal_orig = Date.parse(yearMonDay_orig)/1000 
 
 					var buttonValue = $("input:radio[name='dateRange"+attr+"']:checked").val();	
+					console.log("Button value: " + buttonValue); 
+					if(buttonValue == "Between"){ //need to get both values
+						endDate = curAttr[1].value;
+						var yearMonDay_end = "";
+						yearMonDay_end = yearMonDay_end + endDate.substring(6,10) + "/" + endDate.substring(0,2) +"/" + endDate.substring(3,5);
+						console.log(yearMonDay_end);
 
-					clause = attr + " " + buttonValue + " " + timeVal;
+						var timeVal_end = Date.parse(yearMonDay_end)/1000 
+						clause = attr + " " + buttonValue + " " + timeVal_orig + " and " + timeVal_end + " ";	
+					}
+					else{
+						clause = attr + " " + buttonValue + " " + timeVal_orig;						
+					}
 					console.log(clause);
 					whereClauses.push(clause);
 
