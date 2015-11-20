@@ -12,7 +12,7 @@ var dbs = {
 //term_num means it is a number field but cannot apply greater than/less than, etc. 
 //text means it is a multiple-word text field. user will want boolean word search, and number of words
 	geo_wtp:{
-		name:"Full We The People Data",
+		name:"Old WTP Data",
 		tables:{
 			wtp_data_issues:{
 				name:"Incomplete Issue Code Table",
@@ -113,7 +113,7 @@ var dbs = {
 	},
 
 	wtp:{
-		name:"Public We The People Data",
+		name:"Modified Old WTP Data",
 		tables:{
 			issue:{
 				name:"Issue Code Table",
