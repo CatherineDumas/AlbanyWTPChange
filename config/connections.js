@@ -44,7 +44,7 @@ module.exports.connections = {
   Geo_wtp: {
     module    : 'sails-mysql',
     host      : 'localhost',
-    port      : 3306,
+    port      : 9999,
     user      : 'wtp_ro',
     password  : '9Anc0uf54l0HLsBKossQ',
     database  : 'geo_wtp'
@@ -53,7 +53,7 @@ module.exports.connections = {
   Twitter_data: {
     module    : 'sails-mysql',
     host      : 'localhost',
-    port      : 3306,
+    port      : 9999,
     user      : 'wtp_ro',
     password  : '9Anc0uf54l0HLsBKossQ',
     database  : 'twitter_data'
@@ -62,7 +62,7 @@ module.exports.connections = {
   Wtp: {
     module    : 'sails-mysql',
     host      : 'localhost',
-    port      : 3306,
+    port      : 9999,
     user      : 'wtp_ro',
     password  : '9Anc0uf54l0HLsBKossQ',
     database  : 'wtp'
@@ -71,7 +71,7 @@ module.exports.connections = {
   Wtp_current: {
     module    : 'sails-mysql',
     host      : 'localhost',
-    port      : 3306,
+    port      : 9999,
     user      : 'rdubowsky',
     password  : 'rIILpNUwzqutvOu_',
     database  : 'wtp_82015'    
