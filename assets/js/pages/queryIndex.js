@@ -70,11 +70,12 @@ function table_function(table){
 
 	Object.keys(dbs[curDB]['tables'][curTable]['fields']).forEach(function(attribute){
 
+		curAttr.push(attribute);
 		var attrDiv = $('<div style="display:inline-block;vertical-align:text-top;" id='+attribute+'_div></div>');
 
 		attrDiv.appendTo('#attribute_list');
 
-		var checkboxBtn = $('<button style="margin-bottom:5px;" class = "btn btn-primary:active" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
+		var checkboxBtn = $('<button style="margin-bottom:5px;" class = "btn-primary" onClick="attr_function(this.id)" name="attribute" id='+attribute+' value='+attribute+' >'+attribute+'</button>');
 		    checkboxBtn.appendTo('#'+attribute+'_div');
  
 	})
@@ -89,28 +90,41 @@ function attr_function(attr){
 	//Add it to the curAttr array (for querying)
 	//Call function to generate where_clause input field
 	if(attrIndex == -1){
+		toggleButton(attr);
 		curAttr.push(attr);	
-		where_attr(attr);
 	}
 	else{
-		//If it was already selected, remove it from the array and remove the input div
-		curAttr.splice(attrIndex,1);
-		$("#"+attr+'_where_div').empty();
-		// $('#'+attr+'_where').remove();
-		// $("#input_"+attr).datepicker('hide');
-		// $("#input_"+attr).datepicker('destroy');
+
+		var curAttrDiv = $("#"+attr+"_where");
+
+		//This means 'where' is not currently active
+		if(curAttrDiv.length == 0){
+			where_attr(attr);
+		}
+		else{
+			//If it was already selected, remove it from the array and remove the input div
+			curAttr.splice(attrIndex,1);
+			$("#"+attr+'_where_div').empty();
+			toggleButton(attr);
+		}
+
+
 
 	}
 
-	//Toggles the color of the button
-	if($("#"+attr).hasClass('btn-primary:active')){
-		$("#"+attr).removeClass('btn-primary:active').addClass('btn-primary');
-	}
-	else{
-		$("#"+attr).removeClass('btn-primary').addClass('btn-primary:active');
-	}
+
 
 	console.log(curAttr);
+}
+
+function toggleButton(id){
+	//Toggles the color of the button
+	if($("#"+id).hasClass('btn-primary:active')){
+		$("#"+id).removeClass('btn-primary:active').addClass('btn-primary');
+	}
+	else{
+		$("#"+id).removeClass('btn-primary').addClass('btn-primary:active');
+	}	
 }
 
 //Creates the appropriate where_clause input box for the given (selected) attribute
