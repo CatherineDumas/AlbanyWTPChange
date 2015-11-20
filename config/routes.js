@@ -101,17 +101,17 @@ module.exports.routes = {
   *
   ***************************************************************************/
 
-  '/Local_wtp_data_issues_query' : 'Local_Wtp_Controller.Wtp_data_issues',
+  // '/Local_wtp_data_issues_query' : 'Local_Wtp_Controller.Wtp_data_issues',
 
-  '/Local_wtp_data_petition_issues_query' : 'Local_Wtp_Controller.Wtp_data_petition_issues',
+  // '/Local_wtp_data_petition_issues_query' : 'Local_Wtp_Controller.Wtp_data_petition_issues',
 
-  '/Local_wtp_data_petition_responses_query' : 'Local_Wtp_Controller.Wtp_data_petition_responses',
+  // '/Local_wtp_data_petition_responses_query' : 'Local_Wtp_Controller.Wtp_data_petition_responses',
 
-  '/Local_wtp_data_petitions_query' : 'Local_Wtp_Controller.Wtp_data_petitions',
+  // '/Local_wtp_data_petitions_query' : 'Local_Wtp_Controller.Wtp_data_petitions',
 
-  '/Local_wtp_data_responses_query' : 'Local_Wtp_Controller.Wtp_data_responses',
+  // '/Local_wtp_data_responses_query' : 'Local_Wtp_Controller.Wtp_data_responses',
 
-  '/Local_wtp_data_signatures_query' : 'Local_Wtp_Controller.Wtp_data_signatures'
+  // '/Local_wtp_data_signatures_query' : 'Local_Wtp_Controller.Wtp_data_signatures'
 
 
 
