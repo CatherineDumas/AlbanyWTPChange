@@ -2,13 +2,13 @@
 function processData(dataFromServer){
 
 	if(dataFromServer[0] == null){
-		$("#success").empty();
+		$("#downloadStatus").empty();
 		$("#error").text("No results match your query");
 		return false;
 	}
 	else{
 		$("#error").empty();
-		$("#status").text("Results downloading");
+		$("#downloadStatus").text("Results downloading");
 		Object.keys(dataFromServer[0]).forEach(function(attrName){
 
 			//if column name = created, we want to convert it to a date
