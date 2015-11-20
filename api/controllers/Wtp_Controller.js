@@ -154,31 +154,7 @@ module.exports = {
 
 		Wtp.query(newQuery,null,function(err,data){
 			console.log("Error",err);
-
-			//For every row in data, get the id
-			//query for the category ids
-			//then query for the english translladtion of the ids
-			//Put them in the original data
-			//Send it home
-
-			Object.keys(data).forEach(function(row){
-
-				var petId = data[row].id;
-
-				var catQuery = "Select issue_id from petition_issue where petition_id = "+ petId;
-
-				Wtp.query(catQuery,null,function(err,catData){
-
-					console.log("a row",data[row]," | ",catData);
-
-
-				})
-
-			});
-
-
-			//console.log(data[0].id);
-			//res.json(data);
+			res.json(data);
 		})
 	},
 
