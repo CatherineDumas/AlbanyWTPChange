@@ -60,8 +60,10 @@ function getWhere(attributes){
 
 					var buttonValue = $("input:radio[name='dateRange"+attr+"']:checked").val();	
 					console.log("Button value: " + buttonValue); 
-					if(buttonValue == "Between"){ //need to get both values
-						endDate = curAttr[1].value;
+					if(buttonValue == "between"){ //need to get both values
+						var betweenValue = $("#"+attr+"_where2")
+						console.log(betweenValue[0]);
+						endDate = betweenValue[0].value;
 						var yearMonDay_end = "";
 						yearMonDay_end = yearMonDay_end + endDate.substring(6,10) + "/" + endDate.substring(0,2) +"/" + endDate.substring(3,5);
 						console.log(yearMonDay_end);
