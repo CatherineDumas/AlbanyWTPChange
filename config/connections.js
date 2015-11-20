@@ -77,14 +77,14 @@ module.exports.connections = {
     database  : 'wtp_82015'    
   },
 
-  // Local_wtp: {
-  //   module    : 'sails-mysql',
-  //   host      : 'localhost',
-  //   port      : 3306,
-  //   user      : 'root',
-  //   password  : 'Jedi21funk',
-  //   database  : 'mysql'
-  // },
+  Local_wtp: {
+    module    : 'sails-mysql',
+    host      : 'localhost',
+    port      : 3306,
+    user      : 'root',
+    password  : 'Jedi21funk',
+    database  : 'mysql'
+  },
 
   /***************************************************************************
   *                                                                          *
