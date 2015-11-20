@@ -72,8 +72,8 @@ module.exports.connections = {
     module    : 'sails-mysql',
     host      : 'localhost',
     port      : 3306,
-    user      : 'wtp_ro',
-    password  : '9Anc0uf54l0HLsBKossQ',
+    user      : 'rdubowsky',
+    password  : 'rIILpNUwzqutvOu_',
     database  : 'wtp_82015'    
   },
 
