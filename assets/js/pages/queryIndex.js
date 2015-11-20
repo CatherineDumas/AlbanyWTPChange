@@ -95,18 +95,35 @@ function attr_function(attr){
 	}
 	else{
 
+
+		//If its length is still 0, it doesnt exist
+
 		var curAttrDiv = $("#"+attr+"_where");
 
-		//This means 'where' is not currently active
+		//See if an input box already exists
 		if(curAttrDiv.length == 0){
+			//It does not. 
+			//Try to make one.
 			where_attr(attr);
+			curAttrDiv = $("#"+attr+"_where");
+			//This means 'where' is not currently active
+			if(curAttrDiv.length == 0){
+				//It can't make one. Toggle it off.
+				//Remove and empty whatever is there
+				curAttr.splice(attrIndex,1);
+				$("#"+attr+'_where_div').empty();
+				toggleButton(attr);
+			}
+			//If it exists, above if will not execute
+			//And the input will remain			
 		}
 		else{
-			//If it was already selected, remove it from the array and remove the input div
+			//It existed. Time to Toggle off
 			curAttr.splice(attrIndex,1);
 			$("#"+attr+'_where_div').empty();
 			toggleButton(attr);
 		}
+
 
 
 
