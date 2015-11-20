@@ -67,6 +67,15 @@ module.exports.connections = {
     password  : '9Anc0uf54l0HLsBKossQ',
     database  : 'wtp'
   },
+  //This one will change with every new data dump
+  Wtp_current: {
+    module    : 'sails-mysql',
+    host      : 'localhost',
+    port      : 3306,
+    user      : 'wtp_ro',
+    password  : '9Anc0uf54l0HLsBKossQ',
+    database  : 'wtp_82015'    
+  }
 
   // Local_wtp: {
   //   module    : 'sails-mysql',

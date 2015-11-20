@@ -113,7 +113,23 @@ module.exports.routes = {
 
   // '/Local_wtp_data_signatures_query' : 'Local_Wtp_Controller.Wtp_data_signatures'
 
+  /***************************************************************************
+  *
+  * Wtp_current routes
+  *
+  ***************************************************************************/
 
+  '/Wtp_current_data_issues_query' : 'Wtp_Current_Controller.Wtp_data_issues',
+
+  '/Wtp_current_data_petition_issues_query' : 'Wtp_Current_Controller.Wtp_data_petition_issues',
+
+  '/Wtp_current_data_petition_responses_query' : 'Wtp_Current_Controller.Wtp_data_petition_responses',
+
+  '/Wtp_current_data_petitions_query' : 'Wtp_Current_Controller.Wtp_data_petitions',
+
+  '/Wtp_current_data_responses_query' : 'Wtp_Current_Controller.Wtp_data_responses',
+
+  '/Wtp_current_data_signatures_query' : 'Wtp_Current_Controller.Wtp_data_signatures'
 
 
 
