@@ -75,7 +75,7 @@ module.exports.connections = {
     user      : 'wtp_ro',
     password  : '9Anc0uf54l0HLsBKossQ',
     database  : 'wtp_82015'    
-  }
+  },
 
   // Local_wtp: {
   //   module    : 'sails-mysql',
