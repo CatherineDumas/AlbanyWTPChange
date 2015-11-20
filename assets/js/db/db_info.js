@@ -12,7 +12,7 @@ var dbs = {
 //term_num means it is a number field but cannot apply greater than/less than, etc. 
 //text means it is a multiple-word text field. user will want boolean word search, and number of words
 	geo_wtp:{
-		name:"Full We The People Data",
+		name:"Old WTP Data",
 		tables:{
 			wtp_data_issues:{
 				name:"Incomplete Issue Code Table",
@@ -113,7 +113,7 @@ var dbs = {
 	},
 
 	wtp:{
-		name:"Public We The People Data",
+		name:"Modified Old WTP Data",
 		tables:{
 			issue:{
 				name:"Issue Code Table",
@@ -220,12 +220,79 @@ var dbs = {
 			}
 		}	
 	},
-	local_wtp:{
-		name:"Local WTP Database",
+	// local_wtp:{
+	// 	name:"Local WTP Database",
+	// 	tables:{
+	// 		wtp_data_issues:{
+	// 			name:"Incomplete Issue Code Table",
+	// 			route:"/local_wtp_data_issues_query",
+	// 			fields:{
+	// 				'id':{type:"key"},
+	// 				'name':{type:"term_text"}
+	// 			}
+	// 		},
+	// 		wtp_data_petition_issues:{
+	// 			name:"Petition and Issue Crosstable",
+	// 			route:"/local_wtp_data_petition_issues_query",
+	// 			fields:{
+	// 				'petition_id':{type:"key"},
+	// 				'issue_id':{type:"key"}
+
+	// 			}
+	// 		},
+	// 		wtp_data_petition_responses:{
+	// 			name:"Petition and Response Crosstable",
+	// 			route:"/local_wtp_data_petition_responses_query",
+	// 			fields:{
+	// 				'petition_id':{type:"key"},
+	// 				'response_id':{type:"key"},
+	// 				'association_time':{type:""}
+	// 			}
+	// 		},
+	// 		wtp_data_petitions:{
+	// 			name:"Petitions",
+	// 			route:"/local_wtp_data_petitions_query",
+	// 			fields:{
+	// 				'serial':{type:"key"},
+	// 				'id':{type:"key"},
+	// 				'type':{type:"term_text"},
+	// 				'title':{type:"text"},
+	// 				'body':{type:"text"},
+	// 				'signature_threshold':{type:"value"},
+	// 				'signature_count':{type:"value"},
+	// 				'url':{type:"url"},
+	// 				'deadline':{type:"term_num"},
+	// 				'created':{type:"time"}
+	// 			}
+	// 		},
+	// 		wtp_data_responses:{
+	// 			name:"Response URL",
+	// 			route:"/local_wtp_data_responses_query",
+	// 			fields:{
+	// 				'id':{type:"key"},
+	// 				'url':{type:"url"}
+	// 			}
+	// 		},
+	// 		wtp_data_signatures:{
+	// 			name:"Signatures",
+	// 			route:"/local_wtp_data_signatures_query",
+	// 			fields:{
+	// 				'id':{type:"key"},
+	// 				'petition_id':{type:"key"},
+	// 				'type':{type:"term_text"},
+	// 				'name':{type:"term_text"},
+	// 				'zip':{type:"term_num"},
+	// 				'created':{type:"time"}
+	// 			}
+	// 		}
+	// 	}
+	// },
+wtp_current:{
+		name:"Most Recent WTP Data",
 		tables:{
 			wtp_data_issues:{
 				name:"Incomplete Issue Code Table",
-				route:"/local_wtp_data_issues_query",
+				route:"/Wtp_current_data_issues_query",
 				fields:{
 					'id':{type:"key"},
 					'name':{type:"term_text"}
@@ -233,7 +300,7 @@ var dbs = {
 			},
 			wtp_data_petition_issues:{
 				name:"Petition and Issue Crosstable",
-				route:"/local_wtp_data_petition_issues_query",
+				route:"/Wtp_current_data_petition_issues_query",
 				fields:{
 					'petition_id':{type:"key"},
 					'issue_id':{type:"key"}
@@ -242,7 +309,7 @@ var dbs = {
 			},
 			wtp_data_petition_responses:{
 				name:"Petition and Response Crosstable",
-				route:"/local_wtp_data_petition_responses_query",
+				route:"/Wtp_current_data_petition_responses_query",
 				fields:{
 					'petition_id':{type:"key"},
 					'response_id':{type:"key"},
@@ -251,7 +318,7 @@ var dbs = {
 			},
 			wtp_data_petitions:{
 				name:"Petitions",
-				route:"/local_wtp_data_petitions_query",
+				route:"/Wtp_current_data_petitions_query",
 				fields:{
 					'serial':{type:"key"},
 					'id':{type:"key"},
@@ -267,7 +334,7 @@ var dbs = {
 			},
 			wtp_data_responses:{
 				name:"Response URL",
-				route:"/local_wtp_data_responses_query",
+				route:"/Wtp_current_data_responses_query",
 				fields:{
 					'id':{type:"key"},
 					'url':{type:"url"}
@@ -275,7 +342,7 @@ var dbs = {
 			},
 			wtp_data_signatures:{
 				name:"Signatures",
-				route:"/local_wtp_data_signatures_query",
+				route:"/Wtp_current_data_signatures_query",
 				fields:{
 					'id':{type:"key"},
 					'petition_id':{type:"key"},
@@ -286,5 +353,5 @@ var dbs = {
 				}
 			}
 		}
-	},
+	}
 }
