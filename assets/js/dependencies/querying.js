@@ -32,7 +32,7 @@ function processData(dataFromServer){
 //Type of file to be downloaded
 //And callback function -- which is always processData
 function dbQuery(params,type,cb){
-	console.log(params);
+	console.log("in db query" + params);
 
 	var url  = dbs[params.db]['tables'][params.table].route;
 	console.log("URL in execQuery", url);
