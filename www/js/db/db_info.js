@@ -73,8 +73,7 @@ var dbs = {
 					'type':{type:"term_text"},
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
-					'created':{type:"time"},
-					'signature_count':{type:"term_num"}
+					'created':{type:"time"}
 				}
 			}
 		}
@@ -283,8 +282,7 @@ var dbs = {
 					'type':{type:"term_text"},
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
-					'created':{type:"time"},
-					'signature_count':{type:"term_num"}
+					'created':{type:"time"}
 				}
 			}
 		}
@@ -351,8 +349,7 @@ wtp_current:{
 					'type':{type:"term_text"},
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
-					'created':{type:"time"},
-					'signature_count':{type:"term_num"}
+					'created':{type:"time"}
 				}
 			}
 		}

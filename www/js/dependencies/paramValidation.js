@@ -100,20 +100,6 @@ function getWhere(attributes){
 					});
 
 				}
-			/*	else if(attr == "signature_count"){
-					var id;
-					var interval = curAttr[0].value; //get how many days we want
-					//need to get ID as well
-					attributes.forEach(function(findIdAttr){
-						var curr = $("#"+findIdAttr+"_where")
-						if(findIdAttr == "petition_id"){
-							id = curr[0].value;
-						}
-					}
-					//now we have ID
-					//need to get date created
-
-				}*/
 			}
 
 
