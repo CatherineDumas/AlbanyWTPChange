@@ -296,6 +296,7 @@ module.exports = {
 		var params = req.param('params');
 		var queryAttr = "";
 		//console.log(params.attr);
+		var idQueryBuff; //dummy buffer if signature count exits
 
 		//select clause
 		if(params.attr.length == 0){
@@ -303,7 +304,6 @@ module.exports = {
 		}
 		else{
 			params.attr.forEach(function(attr){
-				var idQueryBuff; //dummy buffer if signature count exits
 				//dont want to select id
 				if(attr == "petition_id"){
 					idQueryBuff = attr + ","
