@@ -190,10 +190,7 @@ function where_attr(attr){
 			keywordBtn1.appendTo('#'+attr+'_where_div');
 			keywordBtn2.appendTo('#'+attr+'_where_div');
 		}
-		if(attr == "signature_count"){
-			var countBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  One (or more) signature day counts"> </input>');			
-			countBox.appendTo('#'+attr+'_where_div');
-		}
+
 }
 
 //Deals with creating a second calandar for date ranges
