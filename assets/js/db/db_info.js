@@ -74,7 +74,9 @@ var dbs = {
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
 					'created':{type:"time"},
-					'signature_count':{type:"term_num"}
+					'signature_total_day_count':{type:"term_num"},
+					'signature_single_day_count':{type:"term_num"}
+
 				}
 			}
 		}
@@ -179,7 +181,7 @@ var dbs = {
 					'city':{type:"term_text"},
 					'state':{type:"term_text"},
 					'zip':{type:"term_num"}
-				}
+				} 
 			},
 			signature_counts:{
 				name:"Signature Count and Petition Crosstable",
@@ -284,7 +286,9 @@ var dbs = {
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
 					'created':{type:"time"},
-					'signature_count':{type:"term_num"}
+					'signature_total_day_count':{type:"term_num"},
+					'signature_single_day_count':{type:"term_num"}
+
 				}
 			}
 		}
@@ -352,7 +356,8 @@ wtp_current:{
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
 					'created':{type:"time"},
-					'signature_count':{type:"term_num"}
+					'signature_total_day_count':{type:"term_num"},
+					'signature_single_day_count':{type:"term_num"}
 				}
 			}
 		}
