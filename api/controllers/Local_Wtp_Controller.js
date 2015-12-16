@@ -308,7 +308,7 @@ module.exports = {
 				if(attr == "petition_id"){
 					idQueryBuff = attr + ","
 				}
-				else if(attr == "signature_count"){
+				else if(attr == "signature_total_day_count" || attr == "signature_single_day_count"  ){
 					queryAttr += " count(*),";
 					flag = 1; //this flag will reprsent if signature count is here
 				}
