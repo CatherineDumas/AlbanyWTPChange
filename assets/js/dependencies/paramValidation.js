@@ -103,7 +103,6 @@ function getWhere(attributes){
 				else if(attr == "signature_total_day_count"){ //need to hardcode a lot of this
 					var id;
 					var interval = curAttr[0].value; //get how many days we want
-					interval -= 1;
 					//need to get ID as well
 					attributes.forEach(function(findIdAttr){
 						var curr = $("#"+findIdAttr+"_where")
@@ -122,14 +121,10 @@ function getWhere(attributes){
 					*/
 					var dayCount = interval * 86400; //number of seconds in a day * how many days you want to add 
 				
-					if(interval == 0){
-						clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created <= (wtp_data_petitions.created + " + dayCount + ") ";
 
-					}
-					else{
-						clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
 
-					}
+					clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
+
 					//clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
 					whereClauses.push(clause);
 
