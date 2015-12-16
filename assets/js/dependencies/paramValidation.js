@@ -103,6 +103,7 @@ function getWhere(attributes){
 				else if(attr == "signature_total_day_count"){ //need to hardcode a lot of this
 					var id;
 					var interval = curAttr[0].value; //get how many days we want
+					interval -= 1;
 					//need to get ID as well
 					attributes.forEach(function(findIdAttr){
 						var curr = $("#"+findIdAttr+"_where")
@@ -120,13 +121,23 @@ function getWhere(attributes){
 					/*select wtp_data_signatures.id FROM wtp_data_signatures,wtp_data_petitions where wtp_data_signatures.petition_id = '4e7b21632ee8d04577000000' AND wtp_data_petitions.id = '4e7b21632ee8d04577000000' AND wtp_data_signatures.created <= (wtp_data_petitions.created + 86400);
 					*/
 					var dayCount = interval * 86400; //number of seconds in a day * how many days you want to add 
-					clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
+				
+					if(interval == 0){
+						clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created <= (wtp_data_petitions.created + " + dayCount + ") ";
+
+					}
+					else{
+						clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
+
+					}
+					//clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
 					whereClauses.push(clause);
 
 				}
 				else if(attr == "signature_single_day_count"){ //need to hardcode a lot of this
 					var id;
 					var interval = curAttr[0].value; //get how many days we want
+					interval -= 1;
 					//need to get ID as well
 					attributes.forEach(function(findIdAttr){
 						var curr = $("#"+findIdAttr+"_where")
