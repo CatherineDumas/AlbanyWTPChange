@@ -217,7 +217,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_petitions " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petitions " + whereClause + "LIMIT 1000";
 
 		//var finalQuery = 'Select * from wtp_data_petitions LIMIT 100';
 
@@ -365,11 +365,11 @@ module.exports = {
 		//need to build query differently
 
 		if(flag){
-			newQuery = "Select " + queryAttr + " from wtp_data_signatures,wtp_data_petitions " + whereClause + "LIMIT 100";			
+			newQuery = "Select " + queryAttr + " from wtp_data_signatures,wtp_data_petitions " + whereClause + "LIMIT 1000";			
 		}
 		else
 		{
-			newQuery = "Select " + queryAttr + " from wtp_data_signatures " + whereClause + "LIMIT 100";
+			newQuery = "Select " + queryAttr + " from wtp_data_signatures " + whereClause + "LIMIT 1000";
 		}
 
 		//var finalQuery = 'Select * from wtp_data_signatures LIMIT 100';
