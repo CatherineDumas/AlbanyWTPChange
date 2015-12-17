@@ -105,7 +105,9 @@ function JSONToTSVConvertor(JSONData, ReportTitle, ShowLabel) {
         
         //2nd loop will extract each column and convert it in string comma-seprated
         for (var index in arrData[i]) {
-            row += '"' + arrData[i][index] + '"\t';
+            var origRow = "" + arrData[i][index];
+            origRow = origRow.replace(/(\r\n|\n|\r)/gm,"")
+            row += '"' + origRow + '"\t';
         }
 
         row.slice(0, row.length - 1);
