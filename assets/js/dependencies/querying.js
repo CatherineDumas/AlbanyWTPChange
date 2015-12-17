@@ -1,7 +1,7 @@
 //Performs post-processing on certain fields/types
 function processData(dataFromServer){
 
-	if(dataFromServer[0] == null){
+	if(!dataFromServer[0]){
 		$("#downloadStatus").empty();
 		$("#error").text("No results match your query");
 		return false;
@@ -32,31 +32,40 @@ function processData(dataFromServer){
 //Type of file to be downloaded
 //And callback function -- which is always processData
 function dbQuery(params,type,cb){
-	console.log("in db query" + params);
+	console.log("in db query", params);
 
 	var url  = dbs[params.db]['tables'][params.table].route;
 	console.log("URL in execQuery", url);
 
+
+
+
 	var fileName = params.db + "_" + params.table;
 
-	d3.json(url)
-	.post(JSON.stringify({params:params}),function(err,dataFromServer){
+		d3.json(url)
+		.post(JSON.stringify({params:params}),function(err,dataFromServer){
 
-		var processData = cb(dataFromServer);
+			var processData = cb(dataFromServer);
 
-		if(processData == false){
+			if(processData == false){
 
-		}
-		else{
-			console.log("data",processData);
-
-			if(type == "csv"){
-				JSONToCSVConvertor(processData, fileName, true);			
 			}
 			else{
-				JSONToTSVConvertor(processData, fileName, true);
-			}			
-		}
+				console.log("data",processData);
 
-	})
+				if(type == "csv"){
+					JSONToCSVConvertor(processData, fileName, true);			
+				}
+				else{
+					JSONToTSVConvertor(processData, fileName, true);
+				}			
+			}
+
+		})			
+
+	
+
+
+
+
 }

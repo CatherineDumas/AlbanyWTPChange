@@ -17,9 +17,8 @@ function checkParams(params){
 
 	//Need to add something to params
 	whereParams = getWhere(params.attr);
-	console.log("checkParams " + whereParams);
-	if(paramsStatus){
-		console.log("in if");
+
+	if(paramsStatus){;
 		return whereParams;
 	}
 	else{
@@ -36,7 +35,7 @@ function getWhere(attributes){
 	//console.log(attributes);
 
 	attributes.forEach(function(attr){
-		console.log("attrs are :" + attr);
+
 		var curAttr = $("#"+attr+"_where")
 		//If length is 0, it does not have a where field
 		if(curAttr.length == 0){
@@ -81,13 +80,14 @@ function getWhere(attributes){
 				else if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "key"){
 					var keyVal=curAttr[0].value;
 
-				/*	var arrayOfIds = keyVal.split(",");
+
+
+
+					var arrayOfIds = keyVal.split(",");
 					arrayOfIds.forEach(function(id){
 						clause = attr + " = '" + id+"'";
 						whereClauses.push(clause);						
-					}); */
-					console.log(clause);
-					whereClauses.push(clause);
+					}); 
 				}
 				else if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
 					var textVal = curAttr[0].value;
@@ -100,61 +100,6 @@ function getWhere(attributes){
 					});
 
 				}
-				else if(attr == "signature_total_day_count"){ //need to hardcode a lot of this
-					var id;
-					var interval = curAttr[0].value; //get how many days we want
-					//need to get ID as well
-					attributes.forEach(function(findIdAttr){
-						var curr = $("#"+findIdAttr+"_where")
-						if(findIdAttr == "petition_id"){
-							id = curr[0].value;
-						}
-					});
-
-
-					console.log("petition_id " + id +",count + " + interval);
-					//now we have ID
-					//need to get date created
-
-					//query that works in the real database:
-					/*select wtp_data_signatures.id FROM wtp_data_signatures,wtp_data_petitions where wtp_data_signatures.petition_id = '4e7b21632ee8d04577000000' AND wtp_data_petitions.id = '4e7b21632ee8d04577000000' AND wtp_data_signatures.created <= (wtp_data_petitions.created + 86400);
-					*/
-					var dayCount = interval * 86400; //number of seconds in a day * how many days you want to add 
-				
-
-
-					clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
-
-					//clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
-					whereClauses.push(clause);
-
-				}
-				else if(attr == "signature_single_day_count"){ //need to hardcode a lot of this
-					var id;
-					var interval = curAttr[0].value; //get how many days we want
-					interval -= 1;
-					//need to get ID as well
-					attributes.forEach(function(findIdAttr){
-						var curr = $("#"+findIdAttr+"_where")
-						if(findIdAttr == "petition_id"){
-							id = curr[0].value;
-						}
-					});
-
-
-					console.log("petition_id " + id +",count + " + interval);
-					//now we have ID
-					//need to get date created
-
-					//query that works in the real database:
-					/*select wtp_data_signatures.id FROM wtp_data_signatures,wtp_data_petitions where wtp_data_signatures.petition_id = '4e7b21632ee8d04577000000' AND wtp_data_petitions.id = '4e7b21632ee8d04577000000' AND wtp_data_signatures.created <= (wtp_data_petitions.created + 86400);
-					*/
-					var beginDayCount = interval * 86400; //number of seconds in a day * how many days you want to add 
-					var endDayCount = (interval+1) * 86400;
-					clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created between (wtp_data_petitions.created + " + beginDayCount + ") AND (wtp_data_petitions.created + " + endDayCount + ")";
-					whereClauses.push(clause);
-
-				}
 			}
 
 
@@ -163,9 +108,93 @@ function getWhere(attributes){
 
 		
 	})
-	console.log("where clauses: " + whereClauses);
 	return whereClauses;
 }
+
+
+function parseSigCount(params){
+
+	console.log("parsingsigcount");
+
+	if(params["table"] == "signature_total_day_count"){ //need to hardcode a lot of this
+		var id,interval;
+		
+		//need to get ID as well
+		params["attr"].forEach(function(findIdAttr){
+			var curr = $("#"+findIdAttr+"_where")
+					console.log(curr);
+			if(findIdAttr == "petition_id"){
+				id = curr[0].value;
+			}
+			if(findIdAttr == "number_of_days"){
+				interval = curr[0].value; //get how many days we want
+				interval=parseInt(interval,10);
+				console.log(interval);
+			}
+
+		});
+
+
+		console.log("petition_id ", id,",count + ", interval);
+		//now we have ID
+		//need to get date created
+
+		//query that works in the real database:
+		/*select wtp_data_signatures.id FROM wtp_data_signatures,wtp_data_petitions where wtp_data_signatures.petition_id = '4e7b21632ee8d04577000000' AND wtp_data_petitions.id = '4e7b21632ee8d04577000000' AND wtp_data_signatures.created <= (wtp_data_petitions.created + 86400);
+		*/
+		var dayCount = interval * 86400; //number of seconds in a day * how many days you want to add 
+
+
+
+		clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
+
+		//clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created < (wtp_data_petitions.created + " + dayCount + ") ";
+		params["where"] = [];
+		params["where"].push(clause);
+
+	}
+	else if(params["table"] == "signature_single_day_count"){ //need to hardcode a lot of this
+		var id,interval;
+
+
+		//need to get ID as well
+		params["attr"].forEach(function(findIdAttr){
+			var curr = $("#"+findIdAttr+"_where")
+			console.log(curr);
+			if(findIdAttr == "petition_id"){
+				id = curr[0].value;
+			}
+			if(findIdAttr == "day_number"){
+				interval = curr[0].value; //get how many days we want
+				interval = parseInt(interval, 10);
+				interval -= 1;
+				console.log(interval);
+			}
+		});
+
+
+		console.log("petition_id ", id,",count + ", interval);
+		//now we have ID
+		//need to get date created
+
+		//query that works in the real database:
+		/*select wtp_data_signatures.id FROM wtp_data_signatures,wtp_data_petitions where wtp_data_signatures.petition_id = '4e7b21632ee8d04577000000' AND wtp_data_petitions.id = '4e7b21632ee8d04577000000' AND wtp_data_signatures.created <= (wtp_data_petitions.created + 86400);
+		*/
+		var beginDayCount = interval * 86400; //number of seconds in a day * how many days you want to add 
+		var endDayCount = (interval+1) * 86400;
+		clause = " wtp_data_signatures.petition_id = '" + id + "' AND wtp_data_petitions.id = '" + id + "' AND wtp_data_signatures.created between (wtp_data_petitions.created + " + beginDayCount + ") AND (wtp_data_petitions.created + " + endDayCount + ")";
+		params["where"] = [];		
+		params["where"].push(clause);
+
+	}
+
+	return params;
+
+}
+
+
+
+
 
 //Checks to make sure DB is a legit DB or not
 //Takes just a DB
