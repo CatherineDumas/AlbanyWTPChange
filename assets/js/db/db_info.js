@@ -73,11 +73,24 @@ var dbs = {
 					'type':{type:"term_text"},
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
-					'created':{type:"time"},
-					'signature_total_day_count':{type:"term_num"},
-					'signature_single_day_count':{type:"term_num"}
-
+					'created':{type:"time"}
 				}
+			},
+			signature_total_day_count:{
+				name:"Cumulative Signatures",
+				route:"/geo_wtp_data_signatures_query",
+				fields:{
+					'petition_id':{type:"key"},
+					'number_of_days':{type:"term_num"}
+				}
+			},
+			signature_single_day_count:{
+				name:"Single Day Signatures",
+				route:"/geo_wtp_data_signatures_query",
+				fields:{
+					'petition_id':{type:"key"},
+					'day_number':{type:"term_num"}
+				}		
 			}
 		}
 	},
@@ -285,11 +298,24 @@ var dbs = {
 					'type':{type:"term_text"},
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
-					'created':{type:"time"},
-					'signature_total_day_count':{type:"term_num"},
-					'signature_single_day_count':{type:"term_num"}
-
+					'created':{type:"time"}
 				}
+			},
+			signature_total_day_count:{
+				name:"Cumulative Signatures",
+				route:"/local_wtp_data_signatures_query",
+				fields:{
+					'petition_id':{type:"key"},
+					'number_of_days':{type:"term_num"}
+				}
+			},
+			signature_single_day_count:{
+				name:"Single Day Signatures",
+				route:"/local_wtp_data_signatures_query",
+				fields:{
+					'petition_id':{type:"key"},
+					'day_number':{type:"term_num"}
+				}		
 			}
 		}
 	},
@@ -355,10 +381,24 @@ wtp_current:{
 					'type':{type:"term_text"},
 					'name':{type:"term_text"},
 					'zip':{type:"term_num"},
-					'created':{type:"time"},
-					'signature_total_day_count':{type:"term_num"},
-					'signature_single_day_count':{type:"term_num"}
+					'created':{type:"time"}
 				}
+			},
+			signature_total_day_count:{
+				name:"Cumulative Signatures",
+				route:"/Wtp_current_data_signatures_query",
+				fields:{
+					'petition_id':{type:"key"},
+					'number_of_days':{type:"term_num"}
+				}
+			},
+			signature_single_day_count:{
+				name:"Single Day Signatures",
+				route:"/Wtp_current_data_signatures_query",
+				fields:{
+					'petition_id':{type:"key"},
+					'day_number':{type:"term_num"}
+				}		
 			}
 		}
 	}

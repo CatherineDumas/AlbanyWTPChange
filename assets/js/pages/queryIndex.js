@@ -181,7 +181,7 @@ function where_attr(attr){
 
 		}
 		if(dbs[curDB]['tables'][curTable]['fields'][attr].type == "text"){
-			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  Keywords separated by commas"> </input>');
+			var keyBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="Keywords separated by commas"> </input>');
 			keyBox.appendTo('#'+attr+'_where_div');
 
 			var keywordBtn1 = $('<input onclick=between('+attr+') style="margin-left:.4em;" type="radio" name="keyword'+attr+'" id="'+attr+'_where" value="=" >and</input>');
@@ -190,12 +190,12 @@ function where_attr(attr){
 			keywordBtn1.appendTo('#'+attr+'_where_div');
 			keywordBtn2.appendTo('#'+attr+'_where_div');
 		}
-		if(attr == "signature_total_day_count"){
-			var countBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  signature total day counts"> </input>');			
+		if(attr == "day_number"){
+			var countBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="Single Day Count"> </input>');			
 			countBox.appendTo('#'+attr+'_where_div');
 		}
-		if(attr == "signature_single_day_count"){
-			var countBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="  signature single day counts"> </input>');			
+		if(attr == "number_of_days"){
+			var countBox = $('<input style="margin:0 auto;display:block;border:2px solid black;"type=text class="input" id='+attr+'_where placeholder="Cumulative Day Count"> </input>');			
 			countBox.appendTo('#'+attr+'_where_div');
 		}
 }
@@ -221,8 +221,6 @@ function between(attr){
 //Jquery to execute query. Gets all selected attributes
 $("#csv").on('click', function(){
 
-	console.log("in CSV button",curAttr);
-
 	var params = {db:curDB,table:curTable,attr:curAttr};
 
 
@@ -232,7 +230,8 @@ $("#csv").on('click', function(){
 	
 	params.where = checkParams(params);
 	//Run function to error-check parameters based on the DB and Table
-	console.log("in csv click" + params);
+	params = parseSigCount(params);
+
 	dbQuery(params,"csv",processData);		
 	
 })

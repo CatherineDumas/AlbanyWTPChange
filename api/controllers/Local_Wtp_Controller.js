@@ -217,7 +217,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_petitions " + whereClause + "LIMIT 1000";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petitions " + whereClause + "LIMIT 100";
 
 		//var finalQuery = 'Select * from wtp_data_petitions LIMIT 100';
 
@@ -308,7 +308,7 @@ module.exports = {
 				if(attr == "petition_id"){
 					idQueryBuff = attr + ","
 				}
-				else if(attr == "signature_total_day_count" || attr == "signature_single_day_count"  ){
+				else if(attr == "number_of_days" || attr == "day_number"  ){
 					queryAttr += " count(*),";
 					flag = 1; //this flag will reprsent if signature count is here
 				}
