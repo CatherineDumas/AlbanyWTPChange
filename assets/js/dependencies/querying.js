@@ -37,7 +37,8 @@ function dbQuery(params,type,cb){
 	var url  = dbs[params.db]['tables'][params.table].route;
 	console.log("URL in execQuery", url);
 
-
+	$("#error").empty();
+	$("#downloadStatus").text("Executing Query");
 
 
 	var fileName = params.db + "_" + params.table;
