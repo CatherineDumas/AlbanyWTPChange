@@ -41,7 +41,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_issues " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_issues " + whereClause;
 
 
 
@@ -103,7 +103,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_petition_issues " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petition_issues " + whereClause;
 
 
 		//var finalQuery = 'Select * from wtp_data_petition_issues LIMIT 100';
@@ -161,7 +161,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_petition_responses " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petition_responses " + whereClause;
 		//var finalQuery = 'Select * from wtp_data_petition_responses LIMIT 100';
 
 		console.log("In the controller local_wtp_data_petition_responses");
@@ -217,7 +217,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_petitions " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petitions " + whereClause;
 
 		//var finalQuery = 'Select * from wtp_data_petitions LIMIT 100';
 
@@ -273,7 +273,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_responses " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_responses " + whereClause;
 
 		//var finalQuery = 'Select * from wtp_data_responses LIMIT 100';
 
@@ -365,11 +365,11 @@ module.exports = {
 		//need to build query differently
 
 		if(flag){
-			newQuery = "Select " + queryAttr + " from wtp_data_signatures,wtp_data_petitions " + whereClause + "LIMIT 1000";			
+			newQuery = "Select " + queryAttr + " from wtp_data_signatures,wtp_data_petitions " + whereClause;			
 		}
 		else
 		{
-			newQuery = "Select " + queryAttr + " from wtp_data_signatures " + whereClause + "LIMIT 1000";
+			newQuery = "Select " + queryAttr + " from wtp_data_signatures " + whereClause;
 		}
 
 		//var finalQuery = 'Select * from wtp_data_signatures LIMIT 100';

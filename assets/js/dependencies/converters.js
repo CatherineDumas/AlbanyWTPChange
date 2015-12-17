@@ -33,6 +33,7 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
         for (var index in arrData[i]) {
             var origRow = "" + arrData[i][index];
             origRow = origRow.replace(/(\r\n|\n|\r)/gm,"");
+	    origRow = origRow.replace(/,/g, '');
             row += '"' + origRow + '",';
         }
 
@@ -107,6 +108,7 @@ function JSONToTSVConvertor(JSONData, ReportTitle, ShowLabel) {
         for (var index in arrData[i]) {
             var origRow = "" + arrData[i][index];
             origRow = origRow.replace(/(\r\n|\n|\r)/gm,"")
+	    origRow = origRow.replace(/,/g, '');
             row += '"' + origRow + '"\t';
         }
 
