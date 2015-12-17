@@ -41,20 +41,20 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_issues " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_issues " + whereClause;
 
 
 
 
 
-		console.log("In the controller local_wtp_data_issues");
+		console.log("In the controller Wtp_current_data_issues");
 
 		//finalQuery = "Select * from wtp_data_issues LIMIT 100";
 
 		//res.json({data:"NOTHING"});
 		//console.log(finalQuery);
 		//console.log(newQuery);
-		Local_wtp.query(newQuery,null,function(err,data){
+		Wtp_current.query(newQuery,null,function(err,data){
 			console.log("Error",err);
 			res.json(data);
 		})
@@ -103,7 +103,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_petition_issues " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petition_issues " + whereClause;
 
 
 		//var finalQuery = 'Select * from wtp_data_petition_issues LIMIT 100';
@@ -113,7 +113,7 @@ module.exports = {
 
 		//res.json({data:"NOTHING"});
 
-		Local_wtp.query(newQuery,null,function(err,data){
+		Wtp_current.query(newQuery,null,function(err,data){
 			console.log("Error",err);
 			res.json(data);
 		})
@@ -161,15 +161,15 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_petition_responses " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petition_responses " + whereClause;
 		//var finalQuery = 'Select * from wtp_data_petition_responses LIMIT 100';
 
-		console.log("In the controller local_wtp_data_petition_responses");
+		console.log("In the controller Wtp_current_data_petition_responses");
 
 
 		//res.json({data:"NOTHING"});
 
-		Local_wtp.query(newQuery,null,function(err,data){
+		Wtp_current.query(newQuery,null,function(err,data){
 			console.log("Error",err);
 			res.json(data);
 		})
@@ -217,7 +217,7 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_petitions " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_petitions " + whereClause;
 
 		//var finalQuery = 'Select * from wtp_data_petitions LIMIT 100';
 
@@ -226,7 +226,7 @@ module.exports = {
 
 		//res.json({data:"NOTHING"});
 
-		Local_wtp.query(newQuery,null,function(err,data){
+		Wtp_current.query(newQuery,null,function(err,data){
 			console.log("Error",err);
 			res.json(data);
 		})
@@ -273,16 +273,16 @@ module.exports = {
 			});
 
 		}
-		var newQuery = "Select " + queryAttr + " from wtp_data_responses " + whereClause + "LIMIT 100";
+		var newQuery = "Select " + queryAttr + " from wtp_data_responses " + whereClause;
 
 		//var finalQuery = 'Select * from wtp_data_responses LIMIT 100';
 
-		console.log("In the controller local_Wtp_data_responses");
+		console.log("In the controller Wtp_current_data_responses");
 
 
 		//res.json({data:"NOTHING"});
 
-		Local_wtp.query(newQuery,null,function(err,data){
+		Wtp_current.query(newQuery,null,function(err,data){
 			console.log("Error",err);
 			res.json(data);
 		})
@@ -292,38 +292,21 @@ module.exports = {
 
 	'Wtp_data_signatures': function(req,res){
 		console.log(req.param('params'));
-		var flag = 0; 
+
 		var params = req.param('params');
+		console.log("params: ",params);
 		var queryAttr = "";
 		//console.log(params.attr);
-		var idQueryBuff; //dummy buffer if signature count exits
 
-		//select clause
+
 		if(params.attr.length == 0){
 			queryAttr += "*";
 		}
 		else{
 			params.attr.forEach(function(attr){
-				//dont want to select id
-				if(attr == "petition_id"){
-					idQueryBuff = attr + ","
-				}
-				else if(attr == "number_of_days" || attr == "day_number"  ){
-					queryAttr += " count(*),";
-					flag = 1; //this flag will reprsent if signature count is here
-				}
-				else{
-					queryAttr += attr + ",";
-				}
+				queryAttr += attr + ",";
 			})
-			//if no signature count
-			if(!flag){
-				queryAttr += idQueryBuff;
-			}
-
-			if(queryAttr.length != 0){
-				queryAttr = queryAttr.substring(0, queryAttr.length - 1);
-			}
+			queryAttr = queryAttr.substring(0, queryAttr.length - 1);
 		}
 
 		console.log("Query Params",queryAttr);
@@ -333,53 +316,31 @@ module.exports = {
 		if(params.where.length == 0){
 
 		}
-
 		else if(params.where.length ==1){
-			if(params.where[0] == null){
-
-			}
-			else{
-				whereClause = "where " + params.where[0] + " ";
-			}
+			whereClause = "where " + params.where[0] + " ";
 		}
 		else{
 			whereClause = "where ";
 			params.where.forEach(function(clause){
-				if(clause == null){
-
+				if(params.where.indexOf(clause) == params.where.length - 1){
+					whereClause = whereClause + clause + " ";	
 				}
 				else{
-					if(params.where.indexOf(clause) == params.where.length - 1){
-						whereClause = whereClause + clause + " ";	
-					}
-					else{
-						whereClause = whereClause + clause + " and ";
-					}
+					whereClause = whereClause + clause + " and ";
 				}
 			});
 
 		}
-
-		var newQuery;
-		//if flag is true signature count is selected
-		//need to build query differently
-
-		if(flag){
-			newQuery = "Select " + queryAttr + " from wtp_data_signatures,wtp_data_petitions " + whereClause + "LIMIT 1000";			
-		}
-		else
-		{
-			newQuery = "Select " + queryAttr + " from wtp_data_signatures " + whereClause + "LIMIT 1000";
-		}
+		var newQuery = "Select " + queryAttr + " from wtp_data_signatures " + whereClause;
 
 		//var finalQuery = 'Select * from wtp_data_signatures LIMIT 100';
 
-		//console.log("In the controller local_wtp_data_signatures");
-		console.log(newQuery);
+		console.log("In the controller Wtp_current_data_signatures");
+
 
 		//res.json({data:"NOTHING"});
 
-		Local_wtp.query(newQuery,null,function(err,data){
+		Wtp_current.query(newQuery,null,function(err,data){
 			console.log("Error",err);
 			res.json(data);
 		})
