@@ -31,9 +31,7 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
         
         //2nd loop will extract each column and convert it in string comma-seprated
         for (var index in arrData[i]) {
-            var origRow = "" + arrData[i][index];
-            origRow = origRow.replace(/(\r\n|\n|\r)/gm,"");
-            row += '"' + origRow + '",';
+            row += '"' + arrData[i][index] + '",';
         }
 
         row.slice(0, row.length - 1);
@@ -105,9 +103,7 @@ function JSONToTSVConvertor(JSONData, ReportTitle, ShowLabel) {
         
         //2nd loop will extract each column and convert it in string comma-seprated
         for (var index in arrData[i]) {
-            var origRow = "" + arrData[i][index];
-            origRow = origRow.replace(/(\r\n|\n|\r)/gm,"")
-            row += '"' + origRow + '"\t';
+            row += '"' + arrData[i][index] + '"\t';
         }
 
         row.slice(0, row.length - 1);
